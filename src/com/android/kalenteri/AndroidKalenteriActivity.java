@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.text.format.Time;
 
 public class AndroidKalenteriActivity extends Activity {
 	
@@ -31,7 +32,10 @@ public class AndroidKalenteriActivity extends Activity {
 				if(kayttajanimikentta.getText().toString().equals(kayttaja[0]) && 
 						salasanakentta.getText().toString().equals(kayttaja[1])) {
 					TextView teksti = (TextView) findViewById(R.id.textView4);
-					teksti.setText(R.string.kirjautuminen);
+					//teksti.setText(R.string.kirjautuminen);
+					Time today = new Time(Time.getCurrentTimezone());
+					today.setToNow();
+					teksti.setText("Kello on " + today.format("%k:%M:%S") + "!");
 				}
 				else {
 					TextView teksti = (TextView) findViewById(R.id.textView4);
