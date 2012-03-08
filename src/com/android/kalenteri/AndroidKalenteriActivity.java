@@ -24,14 +24,18 @@ public class AndroidKalenteriActivity extends Activity {
         salasanakentta = (EditText) findViewById(R.id.editText2);
         nappula = (Button) findViewById(R.id.button1);
         
-        nappula.setOnClickListener(new OnClickListener() {
+        nappula.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(kayttajanimikentta.getText().toString() == kayttaja[0] && 
-						salasanakentta.getText().toString() == kayttaja[1]) {
+				if(kayttajanimikentta.getText().toString().equals(kayttaja[0]) && 
+						salasanakentta.getText().toString().equals(kayttaja[1])) {
 					TextView teksti = (TextView) findViewById(R.id.textView4);
 					teksti.setText(R.string.kirjautuminen);
+				}
+				else {
+					TextView teksti = (TextView) findViewById(R.id.textView4);
+					teksti.setText("ei onnistu");
 				}
 			}
 		});
