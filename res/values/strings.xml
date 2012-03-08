@@ -6,5 +6,7 @@
     <string name="Login_title">LOGIN</string>
     <string name="Login_user">Username</string>
     <string name="Login_pass">Password</string>
+    <string name="Login_button">Login</string>
+    <string name="kirjautuminen">Kirjautuminen onnistui.</string>
 
 </resources>
