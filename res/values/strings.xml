@@ -3,10 +3,10 @@
 
     <string name="hello">Hello World!</string>
     <string name="app_name">OpintoKalenteri</string>
-    <string name="Login_title">LOGIN</string>
-    <string name="Login_user">Username</string>
-    <string name="Login_pass">Password</string>
-    <string name="Login_button">Login</string>
-    <string name="kirjautuminen">Kirjautuminen onnistui.</string>
+    <string name="Login_titletext">LOGIN</string>
+    <string name="Login_usertext">Username</string>
+    <string name="Login_passtext">Password</string>
+    <string name="Login_buttontext">Login</string>
+    <string name="Login_failedtext">Login failed.</string>
 
 </resources>

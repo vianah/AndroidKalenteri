@@ -5,21 +5,21 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/Login_headView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Login_title"
+        android:text="@string/Login_titletext"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:text="@string/Login_user"
+        android:id="@+id/Login_usernameView"
+        android:text="@string/Login_usertext"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/Login_usernameEdit"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
@@ -27,27 +27,27 @@
     </EditText>
 
     <TextView
-        android:id="@+id/textView3"
-        android:text="@string/Login_pass"
+        android:id="@+id/Login_passwordView"
+        android:text="@string/Login_passtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/Login_passwordEdit"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/Login_button"
         android:layout_width="106dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="@string/Login_button" />
+        android:text="@string/Login_buttontext" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Login_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />

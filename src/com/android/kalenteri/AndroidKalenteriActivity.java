@@ -10,10 +10,11 @@ import android.text.format.Time;
 
 public class AndroidKalenteriActivity extends Activity {
 	
-	private static String[] kayttaja = {"user","password"};
-	private EditText kayttajanimikentta;
-	private EditText salasanakentta;
-	private Button nappula;
+	private static String[] UserInfo = {"user","password"};
+	private EditText UsernameBox;
+	private EditText PasswordBox;
+	private Button LoginButton;
+	private TextView LoginInfo;
 	
     /** Called when the activity is first created. */
     @Override
@@ -21,25 +22,24 @@ public class AndroidKalenteriActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         
-        kayttajanimikentta = (EditText)findViewById(R.id.editText1);
-        salasanakentta = (EditText) findViewById(R.id.editText2);
-        nappula = (Button) findViewById(R.id.button1);
+        UsernameBox = (EditText)findViewById(R.id.Login_usernameEdit);
+        PasswordBox = (EditText) findViewById(R.id.Login_passwordEdit);
+        LoginButton = (Button) findViewById(R.id.Login_button);
+        LoginInfo = (TextView) findViewById(R.id.Login_info);
         
-        nappula.setOnClickListener(new View.OnClickListener() {
+        LoginButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(kayttajanimikentta.getText().toString().equals(kayttaja[0]) && 
-						salasanakentta.getText().toString().equals(kayttaja[1])) {
-					TextView teksti = (TextView) findViewById(R.id.textView4);
-					//teksti.setText(R.string.kirjautuminen);
+				if(UsernameBox.getText().toString().equals(UserInfo[0]) && 
+						PasswordBox.getText().toString().equals(UserInfo[1])) {
+					
 					Time today = new Time(Time.getCurrentTimezone());
 					today.setToNow();
-					teksti.setText("Kello on " + today.format("%k:%M:%S") + "!");
+					LoginInfo.setText("Kello on " + today.format("%k:%M:%S") + "!");
 				}
 				else {
-					TextView teksti = (TextView) findViewById(R.id.textView4);
-					teksti.setText("ei onnistu");
+					LoginInfo.setText(R.string.Login_failedtext);
 				}
 			}
 		});
