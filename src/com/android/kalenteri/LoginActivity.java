@@ -1,5 +1,7 @@
 package com.android.kalenteri;
 
+import com.android.kalenteri.muut.User;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,7 +37,10 @@ public class LoginActivity extends AndroidKalenteriActivity {
 				if(UsernameBox.getText().toString().equals(UserInfo[0]) && 
 						PasswordBox.getText().toString().equals(UserInfo[1])) {
 					
+					user = new User(UserInfo[0],1);
 					Intent flow = new Intent(getApplicationContext(), MainActivity.class);
+					flow.putExtra("userName", user.getUsername());
+					flow.putExtra("userType", user.getUserType());
 					startActivity(flow);
 					
 					//Time today = new Time(Time.getCurrentTimezone());
