@@ -8,5 +8,6 @@
     <string name="Login_passtext">Password</string>
     <string name="Login_buttontext">Login</string>
     <string name="Login_failedtext">Login failed.</string>
+    <string name="Login_newuser">Create a new user</string>
 
 </resources>

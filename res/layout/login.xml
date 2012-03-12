@@ -52,4 +52,19 @@
         android:layout_height="wrap_content"
         android:text="" />
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <Button
+            android:id="@+id/Login_createUserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Login_newuser"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+        
+    </RelativeLayout>
+
 </LinearLayout>
