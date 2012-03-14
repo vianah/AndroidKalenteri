@@ -1,4 +1,4 @@
-package com.android.kalenteri.muut;
+package com.android.kalenteri.database;
 
 public class User {
 

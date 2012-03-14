@@ -25,6 +25,8 @@ public final class R {
         public static final int Login_passwordView=0x7f060003;
         public static final int Login_usernameEdit=0x7f060002;
         public static final int Login_usernameView=0x7f060001;
+        public static final int add=0x7f06000b;
+        public static final int group=0x7f06000a;
         public static final int relativeLayout1=0x7f060007;
         public static final int textView1=0x7f060009;
     }

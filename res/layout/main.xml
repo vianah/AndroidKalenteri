@@ -11,5 +11,25 @@
         android:text="MAIN MENU"
         android:textSize="@dimen/Main_head"
         android:layout_gravity="center" />
+    
+    <LinearLayout
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New" 
+            android:onClick="onClick"/>
+        
+    </LinearLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello" />
 
 </LinearLayout>
