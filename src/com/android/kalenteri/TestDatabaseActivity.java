@@ -1,9 +1,8 @@
-package com.android.kalenteri.database;
+package com.android.kalenteri;
+
+import com.android.kalenteri.database.*;
 
 import java.util.List;
-import java.util.Random;
-
-import com.android.kalenteri.R;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -12,17 +11,17 @@ import android.widget.ArrayAdapter;
 
 public class TestDatabaseActivity extends ListActivity {
 	
-	private DbSQLiteHelper datasource;
+	private UserCourseDatabase datasource;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		datasource = new DbSQLiteHelper(this);
+		datasource = new UserCourseDatabase(this);
 		datasource.open();
 
-		List<User> values = datasource.getAllComments();
+		List<User> values = datasource.getAllUsers();
 
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
@@ -35,23 +34,22 @@ public class TestDatabaseActivity extends ListActivity {
 	// of the buttons in main.xml
 	public void onClick(View view) {
 		@SuppressWarnings("unchecked")
-		ArrayAdapter<Comment> adapter = (ArrayAdapter<Comment>) getListAdapter();
-		Comment comment = null;
+		ArrayAdapter<User> adapter = (ArrayAdapter<User>) getListAdapter();
+		User user = null;
 		switch (view.getId()) {
 		case R.id.add:
-			String[] comments = new String[] { "Cool", "Very nice", "Hate it" };
-			int nextInt = new Random().nextInt(3);
+			String[] userDetails = new String[] { "anssi", "pass", "1" };
 			// Save the new comment to the database
-			comment = datasource.createComment(comments[nextInt]);
-			adapter.add(comment);
+			user = datasource.createUser(userDetails[0], userDetails[1], Integer.parseInt(userDetails[2]));
+			adapter.add(user);
 			break;
-		case R.id.delete:
+		/*case R.id.delete:
 			if (getListAdapter().getCount() > 0) {
 				comment = (Comment) getListAdapter().getItem(0);
 				datasource.deleteComment(comment);
 				adapter.remove(comment);
 			}
-			break;
+			break;*/
 		}
 		adapter.notifyDataSetChanged();
 	}

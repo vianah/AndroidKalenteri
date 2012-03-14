@@ -2,7 +2,7 @@ package com.android.kalenteri;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.android.kalenteri.muut.*;
+import com.android.kalenteri.database.*;
 
 public class AndroidKalenteriActivity extends Activity {
 

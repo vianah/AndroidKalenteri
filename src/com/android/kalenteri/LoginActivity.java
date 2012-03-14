@@ -1,6 +1,6 @@
 package com.android.kalenteri;
 
-import com.android.kalenteri.muut.User;
+import com.android.kalenteri.database.User;
 
 import android.app.Activity;
 import android.content.Intent;

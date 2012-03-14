@@ -2,6 +2,9 @@ package com.android.kalenteri.database;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -27,7 +30,7 @@ public class UserCourseDatabase {
 		dbHelper.close();
 	}
 
-	public User createUser(String username, String password, String userType) {
+	public User createUser(String username, String password, int userType) {
 		ContentValues values = new ContentValues();
 		values.put(DbSQLiteHelper.COLUMN_USERNAME, username);
 		values.put(DbSQLiteHelper.COLUMN_PASSWORD, password);
@@ -39,11 +42,24 @@ public class UserCourseDatabase {
 				allColumns, DbSQLiteHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
-		return cursorToComment(cursor);
+		return cursorToUser(cursor);
 	}
 	
-	private User cursorToComment(Cursor cursor) {
+	private User cursorToUser(Cursor cursor) {
 		User user = new User(cursor.getString(1), cursor.getInt(3));
 		return user;
+	}
+	
+	public List<User> getAllUsers() {
+		List<User> users = new ArrayList<User>();
+		Cursor cursor = database.query(DbSQLiteHelper.TABLE_USERS,
+				allColumns, null, null, null, null, null);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			User user = cursorToUser(cursor);
+			users.add(user);
+			cursor.moveToNext();
+		}
+		return users;
 	}
 }
