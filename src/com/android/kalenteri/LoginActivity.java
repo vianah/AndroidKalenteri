@@ -42,6 +42,7 @@ public class LoginActivity extends AndroidKalenteriActivity {
 					flow.putExtra("userName", user.getUsername());
 					flow.putExtra("userType", user.getUserType());
 					startActivity(flow);
+					finish();
 					
 					//Time today = new Time(Time.getCurrentTimezone());
 					//today.setToNow();
