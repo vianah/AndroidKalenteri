@@ -36,8 +36,9 @@ public class LoginActivity extends AndroidKalenteriActivity {
 				// TODO Auto-generated method stub
 				if(UsernameBox.getText().toString().equals(UserInfo[0]) && 
 						PasswordBox.getText().toString().equals(UserInfo[1])) {
-					
-					user = new User(UserInfo[0],1);
+					//v‰liaikainen muutos t‰h‰n kohtaan, ett‰ ohjelma k‰‰ntyi
+					//1 lis‰tty User-olion luontiin, koska sen konstruktori muuttui
+					user = new User(1,UserInfo[0],1);
 					Intent flow = new Intent(getApplicationContext(), MainActivity.class);
 					flow.putExtra("userName", user.getUsername());
 					flow.putExtra("userType", user.getUserType());

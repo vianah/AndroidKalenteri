@@ -14,7 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class UserCourseDatabase {
 	private SQLiteDatabase database;
 	private DbSQLiteHelper dbHelper;
-	private String[] allColumns = {DbSQLiteHelper.COLUMN_USERNAME, 
+	private String[] allColumns = {DbSQLiteHelper.COLUMN_ID, DbSQLiteHelper.COLUMN_USERNAME, 
 			DbSQLiteHelper.COLUMN_PASSWORD, DbSQLiteHelper.COLUMN_USERTYPE};
 
 	public UserCourseDatabase(Context context) {
@@ -46,7 +46,8 @@ public class UserCourseDatabase {
 	}
 	
 	private User cursorToUser(Cursor cursor) {
-		User user = new User(cursor.getString(1), cursor.getInt(3));
+		User user = new User((int)cursor.getLong(0), 
+				cursor.getString(1), (int) cursor.getLong(3));
 		return user;
 	}
 	

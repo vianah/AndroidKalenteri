@@ -36,13 +36,13 @@ public class TestDatabaseActivity extends ListActivity {
 		@SuppressWarnings("unchecked")
 		ArrayAdapter<User> adapter = (ArrayAdapter<User>) getListAdapter();
 		User user = null;
-		switch (view.getId()) {
-		case R.id.add:
+		/*switch (view.getId()) {
+		case R.id.add:*/
 			String[] userDetails = new String[] { "anssi", "pass", "1" };
 			// Save the new comment to the database
 			user = datasource.createUser(userDetails[0], userDetails[1], Integer.parseInt(userDetails[2]));
 			adapter.add(user);
-			break;
+			/*break;*/
 		/*case R.id.delete:
 			if (getListAdapter().getCount() > 0) {
 				comment = (Comment) getListAdapter().getItem(0);
@@ -50,7 +50,6 @@ public class TestDatabaseActivity extends ListActivity {
 				adapter.remove(comment);
 			}
 			break;*/
-		}
 		adapter.notifyDataSetChanged();
 	}
 

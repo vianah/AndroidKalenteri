@@ -21,7 +21,7 @@ public class DbSQLiteHelper extends SQLiteOpenHelper {
 	private static final String DATABASE_CREATE = "create table "
 			+ TABLE_USERS + "( " + COLUMN_ID
 			+ " integer primary key autoincrement, " + COLUMN_USERNAME
-			+ " text not null unique, " + COLUMN_PASSWORD + " text not null, " 
+			+ " text not null, " + COLUMN_PASSWORD + " text not null, " 
 			+ COLUMN_USERTYPE + " integer not null);";
 
 	public DbSQLiteHelper(Context context) {
