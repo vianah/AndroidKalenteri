@@ -15,8 +15,31 @@
             android:layout_height="wrap_content"
             android:text="Add New" 
             android:onClick="onClick"/>
+
+        <Button
+            android:id="@+id/test_addCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Course" />
+
+        <Button
+            android:id="@+id/test_addUserToCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add UserToCourse" />
         
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/course_failure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="failure?" />
+
+    <Spinner
+        android:id="@+id/spinnerTest"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
     <ListView
         android:id="@android:id/list"
