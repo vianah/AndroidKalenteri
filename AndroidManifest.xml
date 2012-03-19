@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" android:debuggable="true">
         <activity
-            android:name=".TestDatabaseActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
         </activity>
         <activity android:name="AndroidKalenteriActivity"></activity>
         <activity android:name="MainActivity"></activity>
-        <activity android:name="LoginActivity"></activity>
+        <activity android:name="TestDatabaseActivity"></activity>
     </application>
 
 </manifest>
