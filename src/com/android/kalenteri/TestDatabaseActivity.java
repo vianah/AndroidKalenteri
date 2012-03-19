@@ -16,7 +16,7 @@ public class TestDatabaseActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.databasetest);
 
 		datasource = new UserCourseDatabase(this);
 		datasource.open();
