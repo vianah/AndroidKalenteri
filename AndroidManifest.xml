@@ -21,6 +21,7 @@
         <activity android:name="AndroidKalenteriActivity"></activity>
         <activity android:name="MainActivity"></activity>
         <activity android:name="TestDatabaseActivity"></activity>
+        <activity android:name="CreateUserActivity"></activity>
     </application>
 
 </manifest>

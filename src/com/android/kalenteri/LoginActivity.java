@@ -13,11 +13,12 @@ import android.text.format.Time;
 
 public class LoginActivity extends AndroidKalenteriActivity {
 	
-	private static String[] UserInfo = {"u","p"};
-	private EditText UsernameBox;
-	private EditText PasswordBox;
-	private Button LoginButton;
-	private TextView LoginInfo;
+	private static String[] userInfo = {"u","p"};
+	private EditText usernameBox;
+	private EditText passwordBox;
+	private Button loginButton;
+	private TextView loginInfo;
+	private Button createUserButton;
 	
     /** Called when the activity is first created. */
     @Override
@@ -25,20 +26,21 @@ public class LoginActivity extends AndroidKalenteriActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         
-        UsernameBox = (EditText)findViewById(R.id.Login_usernameEdit);
-        PasswordBox = (EditText) findViewById(R.id.Login_passwordEdit);
-        LoginButton = (Button) findViewById(R.id.Login_button);
-        LoginInfo = (TextView) findViewById(R.id.Login_info);
+        usernameBox = (EditText)findViewById(R.id.Login_usernameEdit);
+        passwordBox = (EditText) findViewById(R.id.Login_passwordEdit);
+        loginButton = (Button) findViewById(R.id.Login_button);
+        loginInfo = (TextView) findViewById(R.id.Login_info);
+        createUserButton = (Button) findViewById(R.id.Login_createUserButton);
         
-        LoginButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(UsernameBox.getText().toString().equals(UserInfo[0]) && 
-						PasswordBox.getText().toString().equals(UserInfo[1])) {
+				if(usernameBox.getText().toString().equals(userInfo[0]) && 
+						passwordBox.getText().toString().equals(userInfo[1])) {
 					//v‰liaikainen muutos t‰h‰n kohtaan, ett‰ ohjelma k‰‰ntyi
 					//1 lis‰tty User-olion luontiin, koska sen konstruktori muuttui
-					user = new User(1,UserInfo[0],1);
+					user = new User(1,userInfo[0],1);
 					Intent flow = new Intent(getApplicationContext(), MainActivity.class);
 					flow.putExtra("userName", user.getUsername());
 					flow.putExtra("userType", user.getUserType());
@@ -50,8 +52,17 @@ public class LoginActivity extends AndroidKalenteriActivity {
 					//LoginInfo.setText("Kello on " + today.format("%k:%M:%S") + "!");
 				}
 				else {
-					LoginInfo.setText(R.string.Login_failedtext);
+					loginInfo.setText(R.string.Login_failedtext);
 				}
+			}
+		});
+        
+        createUserButton.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(), CreateUserActivity.class);
+				startActivity(intent);
 			}
 		});
         

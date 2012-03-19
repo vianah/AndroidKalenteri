@@ -9,5 +9,11 @@
     <string name="Login_buttontext">Login</string>
     <string name="Login_failedtext">Login failed.</string>
     <string name="Login_newuser">Create a new user</string>
+    <string name="Createuser_title">Create new user</string>
+    <string name="Createuser_retype">Retype password</string>
+    <string name="Createuser_button">Create</string>
+    <string name="Createuser_info"/>
+    <string name="Createuser_failed">Passwords do not match!</string>
+    <string name="Createuser_success">User successfully created!</string>
 
 </resources>

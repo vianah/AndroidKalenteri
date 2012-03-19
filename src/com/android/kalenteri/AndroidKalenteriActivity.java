@@ -7,6 +7,7 @@ import com.android.kalenteri.database.*;
 public class AndroidKalenteriActivity extends Activity {
 
 	protected User user;
+	protected UserCourseDatabase dataSource;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
