@@ -5,12 +5,44 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/Main_headView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MAIN MENU"
+        android:text="@string/Main_title"
         android:textSize="@dimen/Main_head"
         android:layout_gravity="center" />
-    
+
+    <TextView
+        android:id="@+id/Main_pointsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Main_points"
+        android:textSize="@dimen/Main_points"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/Main_points" />
+
+    <Button
+        android:id="@+id/Main_manageCoursesButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Main_manageCourses"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/Main_head"
+        android:layout_marginRight="@dimen/Main_head" />
+
+    <TextView
+        android:id="@+id/Main_listTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Main_listTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="@dimen/Main_margin10dp" />
+
+    <ListView
+        android:id="@+id/Main_courseList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/Main_points" >
+    </ListView>
 
 </LinearLayout>
