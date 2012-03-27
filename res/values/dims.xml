@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="Main_head">25dp</dimen>
+    <dimen name="Main_points">20dp</dimen>
+    <dimen name="Main_margin10dp">10dp</dimen>
     
 </resources>

@@ -15,5 +15,9 @@
     <string name="Createuser_info"/>
     <string name="Createuser_failed">Passwords do not match!</string>
     <string name="Createuser_success">User successfully created!</string>
+    <string name="Main_points">pointsit</string>
+    <string name="Main_title">MAIN MENU</string>
+    <string name="Main_manageCourses">Omien kurssien hallinta</string>
+    <string name="Main_listTitle">Tämänhetkiset kurssit:</string>
 
 </resources>
