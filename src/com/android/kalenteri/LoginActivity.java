@@ -1,9 +1,12 @@
 package com.android.kalenteri;
 
+import com.android.kalenteri.database.DatabaseException;
 import com.android.kalenteri.database.User;
+import com.android.kalenteri.database.UserCourseDatabase;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,28 +34,33 @@ public class LoginActivity extends AndroidKalenteriActivity {
         loginButton = (Button) findViewById(R.id.Login_button);
         loginInfo = (TextView) findViewById(R.id.Login_info);
         createUserButton = (Button) findViewById(R.id.Login_createUserButton);
+        dataSource = new UserCourseDatabase(this);
+        dataSource.open();
         
         loginButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(usernameBox.getText().toString().equals(userInfo[0]) && 
-						passwordBox.getText().toString().equals(userInfo[1])) {
+				String username = usernameBox.getText().toString();
+				String password = passwordBox.getText().toString();
+				try {
 					//v‰liaikainen muutos t‰h‰n kohtaan, ett‰ ohjelma k‰‰ntyi
 					//1 lis‰tty User-olion luontiin, koska sen konstruktori muuttui
-					user = new User(1,userInfo[0],1);
+					user = dataSource.loginUserMake(username, password);
 					Intent flow = new Intent(getApplicationContext(), MainActivity.class);
 					flow.putExtra("userName", user.getUsername());
 					flow.putExtra("userType", user.getUserType());
 					startActivity(flow);
 					finish();
+				
+				
 					
 					//Time today = new Time(Time.getCurrentTimezone());
 					//today.setToNow();
 					//LoginInfo.setText("Kello on " + today.format("%k:%M:%S") + "!");
 				}
-				else {
-					loginInfo.setText(R.string.Login_failedtext);
+				catch (DatabaseException e) {
+					loginInfo.setText(e.toString());
 				}
 			}
 		});
