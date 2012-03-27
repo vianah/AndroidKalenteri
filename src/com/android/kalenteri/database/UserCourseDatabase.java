@@ -11,6 +11,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+
+
 public class UserCourseDatabase {
 	private SQLiteDatabase database;
 	private DbSQLiteHelper dbHelper;
@@ -46,6 +48,41 @@ public class UserCourseDatabase {
 		cursor.moveToFirst();
 		return cursorToUser(cursor);
 	}
+	
+	public User loginUserMake(String username, String password) throws DatabaseException{
+		String[] user = {username, password};
+		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE username=? AND password=?", user);
+		if(cursor.getCount()== 0) {
+			throw new DatabaseException("Login Failed!");
+		}
+		else {
+			cursor.moveToFirst();
+			return cursorToUser(cursor);
+		}
+	}
+	
+	public boolean loginCheck(String username, String password) {
+		String[] user = {username, password};
+		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE username=? AND password=?", user);
+		if(cursor.getCount()== 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public boolean doesUserExist(String username) {
+		String[] user = {username};
+		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE username=?", user);
+		if(cursor.getCount()== 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
 	
 	public boolean createCourse(String cName, int cPoints) {
 		ContentValues values = new ContentValues();

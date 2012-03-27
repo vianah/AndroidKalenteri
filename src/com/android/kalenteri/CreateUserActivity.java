@@ -37,20 +37,42 @@ public class CreateUserActivity extends AndroidKalenteriActivity {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				String password = passwordBox.getText().toString();
+				String rePassword = reTypeBox.getText().toString();
+				String username = usernameBox.getText().toString();
 				
-				if (passwordBox.getText().toString().equals(reTypeBox.getText().toString())) {
+				if (username.equals("")) {
+					announcement = Toast.makeText(getApplicationContext(), "username equals null", 
+							Toast.LENGTH_SHORT);
+					announcement.show();
+				}
+				if (dataSource.doesUserExist(username)) {
+					announcement = Toast.makeText(getApplicationContext(), "username is already used", 
+							Toast.LENGTH_SHORT);
+					announcement.show();
+				}
+				else if (password.equals("")) {
+					announcement = Toast.makeText(getApplicationContext(), "password equals null", 
+							Toast.LENGTH_SHORT);
+					announcement.show();
+				}
+				else if (!(password.equals(rePassword))) {
+					announcement = Toast.makeText(getApplicationContext(), "passwords are different", 
+							Toast.LENGTH_SHORT);
+					announcement.show();
+				}
+				else {
+					
 					createUserInfo.setText("");
 					
 					dataSource.createUser(usernameBox.getText().toString(), 
 							passwordBox.getText().toString(), 0);
 					
-					Toast.makeText(getApplicationContext(), R.string.Createuser_success, 
-							Toast.LENGTH_SHORT).show();
+					announcement = Toast.makeText(getApplicationContext(), R.string.Createuser_success, 
+							Toast.LENGTH_SHORT);
+					announcement.show();
 					
 					finish();
-				}
-				else {
-					createUserInfo.setText(R.string.Createuser_failed);
 				}
 			}
 		});
