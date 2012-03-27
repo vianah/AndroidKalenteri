@@ -61,17 +61,6 @@ public class UserCourseDatabase {
 		}
 	}
 	
-	public boolean loginCheck(String username, String password) {
-		String[] user = {username, password};
-		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE username=? AND password=?", user);
-		if(cursor.getCount()== 0) {
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-	
 	public boolean doesUserExist(String username) {
 		String[] user = {username};
 		Cursor cursor = database.rawQuery("SELECT * FROM users WHERE username=?", user);
@@ -101,6 +90,18 @@ public class UserCourseDatabase {
 		long insertId = database.insert(DbSQLiteHelper.TABLE_TAKES, null,
 				values);
 		return (insertId != -1);
+	}
+	public Cursor getUsersCourses(User user) throws DatabaseException{
+		String[] values = {DbSQLiteHelper.COURSES_COLUMN_NAME, DbSQLiteHelper.COURSES_COLUMN_POINTS,
+				DbSQLiteHelper.TAKES_COLUMN_FINISHED, Integer.toString(user.getUserID())};
+		Cursor cursor = database.rawQuery("SELECT ?,?,? FROM takes, courses WHERE takes._id=?", values);
+		if(cursor.getCount()== 0) {
+			throw new DatabaseException("You have no courses!");
+		}
+		else {
+			cursor.moveToFirst();
+			return cursor;
+		}
 	}
 	
 	
