@@ -19,5 +19,11 @@
     <string name="Main_title">MAIN MENU</string>
     <string name="Main_manageCourses">Omien kurssien hallinta</string>
     <string name="Main_listTitle">Tämänhetkiset kurssit:</string>
+    <string name="AdminMain_title">ADMIN SCREEN</string>
+    <string name="AdminMain_manageCourses">Add Course</string>
+    <string name="Createcourse_title">CREATE COURSE</string>
+    <string name="CreateCourse_NameText">Course Name</string>
+    <string name="CreateCourse_PointsText">Course Points</string>
+    <string name="CreateCourse_button">Create</string>
 
 </resources>

@@ -47,7 +47,8 @@ public class LoginActivity extends AndroidKalenteriActivity {
 					//v‰liaikainen muutos t‰h‰n kohtaan, ett‰ ohjelma k‰‰ntyi
 					//1 lis‰tty User-olion luontiin, koska sen konstruktori muuttui
 					user = dataSource.loginUserMake(username, password);
-					Intent flow = new Intent(getApplicationContext(), MainActivity.class);
+					//admin toiminnallisuus kokeilu, normaalisti MainActivity.class
+					Intent flow = new Intent(getApplicationContext(), AdminMainActivity.class);
 					flow.putExtra("userName", user.getUsername());
 					flow.putExtra("userType", user.getUserType());
 					startActivity(flow);

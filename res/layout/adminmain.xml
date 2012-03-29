@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+<TextView
+        android:id="@+id/AdminMain_headView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AdminMain_title"
+        android:textSize="@dimen/Main_head"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/AdminMain_manageCoursesButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/AdminMain_manageCourses"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/Main_margin10dp"
+        android:layout_marginLeft="@dimen/Main_head"
+        android:layout_marginRight="@dimen/Main_head" />
+
+    <TextView
+        android:id="@+id/AdminMain_listTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Main_listTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="@dimen/Main_margin10dp" />
+
+    <ListView
+        android:id="@+id/AdminMain_courseList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/Main_points" >
+    </ListView>
+</LinearLayout>

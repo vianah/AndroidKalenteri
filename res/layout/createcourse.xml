@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+	<TextView
+        android:id="@+id/CreateCourse_headView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Createcourse_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/CreateCourse_courseNameView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/CreateCourse_NameText" />
+
+    <EditText
+        android:id="@+id/CreateCourse_courseNameEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName">
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/CreateCreate_pointView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CreateCourse_PointsText" />
+
+    <EditText
+        android:id="@+id/CreateCourse_PointsEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+    
+    <Button
+        android:id="@+id/CreateCourse_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/CreateCourse_button"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/Main_head"
+        android:layout_marginRight="@dimen/Main_head"
+        android:layout_marginTop="@dimen/Main_margin10dp" />
+    
+</LinearLayout>
