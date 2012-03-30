@@ -15,7 +15,6 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 	private Button addCourse;
 	private ListView courseListView;
 	private TextView loggedAs;
-	private Bundle extras;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +22,8 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adminmain);
 		
-		extras = this.getIntent().getExtras();
-		user = new User(extras.getInt("userID"), 
-				extras.getString("userName"), extras.getInt("userType"));
+		super.createUserFromBundle();
+		
 		loggedAs = (TextView) findViewById(R.id.loggedAsAdmin);
 		loggedAs.setText("Logged as: "+extras.getString("userName"));
 		
