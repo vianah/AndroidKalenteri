@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class AdminMainActivity extends AndroidKalenteriActivity {
 
 	private Button addCourse;
+	private Button acceptCourse;
 	private ListView courseListView;
 	private TextView loggedAs;
 	
@@ -33,6 +34,16 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		acceptCourse = (Button) findViewById(R.id.AdminMain_acceptCourseButton);
+		acceptCourse.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(), AcceptUserCourseActivity.class);
 				startActivity(intent);
 			}
 		});
