@@ -30,6 +30,16 @@
         android:layout_marginLeft="@dimen/Main_head"
         android:layout_marginRight="@dimen/Main_head" />
 
+    <Button
+        android:id="@+id/AdminMain_acceptCourseButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/AdminMain_acceptCourse"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/Main_margin10dp"
+        android:layout_marginLeft="@dimen/Main_head"
+        android:layout_marginRight="@dimen/Main_head" />
+
     <TextView
         android:id="@+id/AdminMain_listTitleView"
         android:layout_width="wrap_content"
