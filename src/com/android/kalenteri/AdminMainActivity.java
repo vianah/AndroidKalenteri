@@ -34,6 +34,7 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
+				intent.putExtras(extras);
 				startActivity(intent);
 			}
 		});
@@ -44,12 +45,10 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), AcceptUserCourseActivity.class);
+				intent.putExtras(extras);
 				startActivity(intent);
 			}
 		});
 		
 	}
-
-	
-
 }

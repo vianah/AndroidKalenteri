@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CreateCourseActivity extends AndroidKalenteriActivity {
 
+	private TextView loggedAs;
 	private Button createCourseButton;
 	private EditText courseNameBox;
 	private EditText coursePointsBox;
@@ -21,6 +23,11 @@ public class CreateCourseActivity extends AndroidKalenteriActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.createcourse);
+		
+		super.createUserFromBundle();
+		
+		loggedAs = (TextView) findViewById(R.id.loggedAsAdmin);
+		loggedAs.setText("Logged as: "+extras.getString("userName"));
 		
 		createCourseButton = (Button) findViewById(R.id.CreateCourse_button);
 		courseNameBox = (EditText) findViewById(R.id.CreateCourse_courseNameEdit);

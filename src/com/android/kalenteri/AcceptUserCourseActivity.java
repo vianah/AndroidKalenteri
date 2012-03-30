@@ -13,10 +13,10 @@ public class AcceptUserCourseActivity extends AndroidKalenteriActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acceptcourse);
 		
-		//super.createUserFromBundle();
+		super.createUserFromBundle();
 		
-		/*loggedAs = (TextView) findViewById(R.id.loggedAsAdmin);
-		loggedAs.setText("Logged as: "+extras.getString("userName"));*/
+		loggedAs = (TextView) findViewById(R.id.loggedAsAdmin);
+		loggedAs.setText("Logged as: "+extras.getString("userName"));
 	}
 	
 }
