@@ -81,7 +81,7 @@ public class UserCourseDatabase {
 				values);
 		return (insertId != -1);
 	}
-	
+	//käyttäjä imoittautuu kurssille
 	public boolean userToCourse(int userId, int courseId ) {
 		ContentValues values = new ContentValues();
 		values.put(DbSQLiteHelper.TAKES_COLUMN_USER_ID, userId);
@@ -91,6 +91,7 @@ public class UserCourseDatabase {
 				values);
 		return (insertId != -1);
 	}
+	//käyttäjän kurssit
 	public Cursor getUsersCourses(User user) throws DatabaseException{
 		String[] values = {Integer.toString(user.getUserID())};
 		Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
@@ -125,4 +126,34 @@ public class UserCourseDatabase {
 		}
 		return users;
 	}
+	//kurssit, joissa käyttäjä ei ole
+	public Cursor getNonUsersCourses(User user) throws DatabaseException {
+		String[] values = {Integer.toString(user.getUserID())};
+		Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
+				"courses.name as coursename, courses.points, takes.finished " +
+				"FROM takes, courses WHERE takes.user_id!=? " + 
+				"AND takes.course_id=courses._id", values);
+		if(cursor.getCount() == 0) {
+			throw new DatabaseException("You are in all courses");
+		}
+		else {
+			cursor.moveToFirst();
+			return cursor;
+		}
+	}
+	
+	public Cursor getAllCourses() throws DatabaseException{
+		Cursor cursor = database.rawQuery("SELECT * FROM courses", null);
+		if(cursor.getCount()== 0) {
+			throw new DatabaseException("No Courses exists!");
+		}
+		else {
+			cursor.moveToFirst();
+			return cursor;
+		}
+	}
+	
+	
+	
+	
 }
