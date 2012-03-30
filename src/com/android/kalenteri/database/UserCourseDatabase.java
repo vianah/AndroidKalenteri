@@ -92,10 +92,12 @@ public class UserCourseDatabase {
 		return (insertId != -1);
 	}
 	public Cursor getUsersCourses(User user) throws DatabaseException{
-		String[] values = {DbSQLiteHelper.COURSES_COLUMN_NAME, DbSQLiteHelper.COURSES_COLUMN_POINTS,
-				DbSQLiteHelper.TAKES_COLUMN_FINISHED, Integer.toString(user.getUserID())};
-		Cursor cursor = database.rawQuery("SELECT ?,?,? FROM takes, courses WHERE takes._id=?", values);
-		if(cursor.getCount()== 0) {
+		String[] values = {Integer.toString(user.getUserID())};
+		Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
+				"courses.name as coursename, courses.points, takes.finished " +
+				"FROM takes, courses WHERE takes.user_id=? " + 
+				"AND takes.course_id=courses._id", values);
+		if(cursor.getCount() == 0) {
 			throw new DatabaseException("You have no courses!");
 		}
 		else {

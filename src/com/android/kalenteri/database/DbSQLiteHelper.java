@@ -20,7 +20,7 @@ public class DbSQLiteHelper extends SQLiteOpenHelper {
 	protected static final String COURSES_COLUMN_POINTS = "points";
 	
 	protected static final String TABLE_TAKES = "takes";
-	protected static final String TAKES_COLUMN_USER_ID = "_id";
+	protected static final String TAKES_COLUMN_USER_ID = "user_id";
 	protected static final String TAKES_COLUMN_COURSE_ID = "course_id";
 	protected static final String TAKES_COLUMN_FINISHED = "finished";
 

@@ -39,32 +39,44 @@ public class LoginActivity extends AndroidKalenteriActivity {
         
         loginButton.setOnClickListener(new View.OnClickListener() {
 			
+        	/*
+        	 * Login-toiminnallisuus:
+        	 * Haetaan tekstikentist‰ usernameBox:n ja passwordBox:n vastaavat tiedot String-muuttujiin
+        	 * Luodaan yhteys tietokantaan ja tallennetaan User-olioon n‰m‰ tiedot
+        	 * Tarkastetaan onko k‰ytt‰j‰ admin: 0 tarkoittaa (t‰ss‰) adminia ja kaikki muu normaalia k‰ytt‰j‰‰
+        	 * Admin-k‰ytt‰j‰ ohjataan AdminMainActivity -aktiviteettiin, muut (normaalit) MainActivity:n
+        	 * Suljetaan viel‰ tietokantayhteys kaikissa tapauksissa :)
+        	 */
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String username = usernameBox.getText().toString();
 				String password = passwordBox.getText().toString();
+				Intent flow;
+				
 				try {
-					//v‰liaikainen muutos t‰h‰n kohtaan, ett‰ ohjelma k‰‰ntyi
-					//1 lis‰tty User-olion luontiin, koska sen konstruktori muuttui
 					user = dataSource.loginUserMake(username, password);
-					//admin toiminnallisuus kokeilu, normaalisti MainActivity.class
-					Intent flow = new Intent(getApplicationContext(), AdminMainActivity.class);
+					
+					if(user.getUserType()==0) {
+						flow = new Intent(getApplicationContext(), MainActivity.class);
+				
+					}
+					else {
+						flow = new Intent(getApplicationContext(), AdminMainActivity.class);
+						
+					}
 					flow.putExtra("userName", user.getUsername());
 					flow.putExtra("userType", user.getUserType());
+					flow.putExtra("userID", user.getUserID());
+					dataSource.close();
 					startActivity(flow);
 					finish();
-				
-				
-					
-					//Time today = new Time(Time.getCurrentTimezone());
-					//today.setToNow();
-					//LoginInfo.setText("Kello on " + today.format("%k:%M:%S") + "!");
 				}
 				catch (DatabaseException e) {
 					loginInfo.setText(e.toString());
 				}
 			}
 		});
+
         
         createUserButton.setOnClickListener(new View.OnClickListener() {
 			
