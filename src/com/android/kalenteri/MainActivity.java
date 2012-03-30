@@ -21,7 +21,6 @@ public class MainActivity extends AndroidKalenteriActivity {
 	private TextView loggedAs;
 	private Button manageCoursesButton;
 	private ListView userCourseView;
-	private Bundle extras;
 	private SimpleCursorAdapter adapter;
 	// listView:n esittely
 
@@ -38,10 +37,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 		
 		manageCoursesButton = (Button) findViewById(R.id.Main_manageCoursesButton);
 		
-		//bundlesta User -olio
-		extras = this.getIntent().getExtras();
-		user = new User(extras.getInt("userID"), 
-				extras.getString("userName"), extras.getInt("userType"));
+		super.createUserFromBundle();
 		
 		loggedAs = (TextView) findViewById(R.id.menu_loggedAs);
 		loggedAs.setText("Logged as: "+extras.getString("userName"));
