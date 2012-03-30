@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends AndroidKalenteriActivity {
 	
 	private TextView pointsInfo;
+	private TextView loggedAs;
 	private Button manageCoursesButton;
 	private ListView userCourseView;
 	private Bundle extras;
@@ -41,6 +42,9 @@ public class MainActivity extends AndroidKalenteriActivity {
 		extras = this.getIntent().getExtras();
 		user = new User(extras.getInt("userID"), 
 				extras.getString("userName"), extras.getInt("userType"));
+		
+		loggedAs = (TextView) findViewById(R.id.menu_loggedAs);
+		loggedAs.setText("Logged as: "+extras.getString("userName"));
 		
 		manageCoursesButton.setOnClickListener(new View.OnClickListener() {
 			
