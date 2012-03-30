@@ -25,5 +25,7 @@
     <string name="CreateCourse_NameText">Course Name</string>
     <string name="CreateCourse_PointsText">Course Points</string>
     <string name="CreateCourse_button">Create</string>
+    <string name="adminCheckBox">Admin</string>
+    <string name="loggedAs"/>
 
 </resources>
