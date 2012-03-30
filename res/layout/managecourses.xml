@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/Managecourses_headView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/Managecourses_titleText"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/Managecourses_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Managecourses_headView"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="17dp"
+        android:prompt="@string/Managecourses_spinnerPrompt" />
+
+    <Button
+        android:id="@+id/Managecourses_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Managecourses_spinner"
+        android:layout_marginLeft="57dp"
+        android:layout_toRightOf="@+id/Managecourses_spinner"
+        android:text="@string/Managecourses_enrollText" />
+
+</RelativeLayout>

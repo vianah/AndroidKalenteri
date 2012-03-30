@@ -28,5 +28,13 @@
     <string name="adminCheckBox">Admin</string>
     <string name="loggedAs">Logged as:</string>
     <string name="AdminMain_acceptCourse">Accept course</string>
+    <string name="Managecourses_spinnerPrompt">Valitse kurssi</string>
+    <string-array name="kurssit_array">
+        <item>Kurssi1</item>
+        <item>Kurssi2</item>
+        <item>Kurssi3</item>
+    </string-array>
+    <string name="Managecourses_enrollText">Ilmoittaudu</string>
+    <string name="Managecourses_titleText">Hallitse kursseja</string>
 
 </resources>
