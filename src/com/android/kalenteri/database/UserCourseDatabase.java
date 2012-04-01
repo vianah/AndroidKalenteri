@@ -97,7 +97,7 @@ public class UserCourseDatabase {
 	public Cursor getUsersCourses(User user) throws DatabaseException{
 		String[] values = {Integer.toString(user.getUserID())};
 		Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
-				"courses.name as coursename, courses.points, takes.finished " +
+				"courses.name as coursename, courses.points, takes.finished, takes.course_id " +
 				"FROM takes, courses WHERE takes.user_id=? " + 
 				"AND takes.course_id=courses._id", values);
 		if(cursor.getCount() == 0) {
