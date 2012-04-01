@@ -11,12 +11,14 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	
 	private Spinner courseSpinner;
 	private Button enrollButton;
 	private ListView activeCoursesList;
+	private SimpleCursorAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +26,31 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.managecourses);
 		
+		dataSource = new UserCourseDatabase(this);
+		dataSource.open();
+		
+		super.createUserFromBundle();
+		
 		courseSpinner = (Spinner) findViewById(R.id.Managecourses_spinner);
 		enrollButton = (Button) findViewById(R.id.Managecourses_button);
 		activeCoursesList = (ListView) findViewById(R.id.Managecourses_activeCoursesList);
+		
+		try {
+			
+			Cursor courseData = dataSource.getNonUsersCourses(user);
+			if(courseData.moveToFirst()) {
+				adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, courseData, 
+						new String [] {"coursename"}, 
+						new int[] {android.R.id.text1});
+				adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				courseSpinner.setAdapter(adapter);
+				dataSource.close();
+				}
+			}
+				catch(DatabaseException e) {
+					announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
+					announcement.show();
+				}
 		
 		// spinner-kokeilu
 		/*ArrayAdapter adapteri = ArrayAdapter.createFromResource(this, R.array.kurssit_array, android.R.layout.simple_spinner_item);
