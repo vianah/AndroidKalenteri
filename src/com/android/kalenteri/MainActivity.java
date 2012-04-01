@@ -22,6 +22,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 	private Button manageCoursesButton;
 	private ListView userCourseView;
 	private SimpleCursorAdapter adapter;
+	private Cursor courseData;
 	
 
 	@Override
@@ -51,6 +52,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 				//Intent intent = new Intent(getApplicationContext(), ManageCoursesActivity.class);
 				Intent intent = makeIntentWithUserBundle(ManageCoursesActivity.class);
 				startActivity(intent);
+				finish();
 				
 			}
 		});
@@ -58,7 +60,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 		//näkymä käyttäjän kursseille
 		try {
 			
-			Cursor courseData = dataSource.getUsersCourses(user);
+			courseData = dataSource.getUsersCourses(user);
 			if(courseData.moveToFirst()) {
 				adapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
 						new String [] {"coursename", "points"}, 
@@ -75,12 +77,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 		
 	}
 
-	/*@Override
-	protected void onStart() {
-		// TODO Auto-generated method stub
-		super.onStart();
-		adapter.notifyDataSetChanged();
-	}*/
+	
 	
 	
 	
