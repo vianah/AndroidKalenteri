@@ -24,6 +24,7 @@
         <activity android:name="CreateUserActivity"></activity>
         <activity android:name="AdminMainActivity"></activity>
         <activity android:name="CreateCourseActivity"></activity>
+        <activity android:name="ManageCoursesActivity"></activity>
     </application>
 
 </manifest>

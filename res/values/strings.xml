@@ -35,6 +35,7 @@
         <item>Kurssi3</item>
     </string-array>
     <string name="Managecourses_enrollText">Ilmoittaudu</string>
-    <string name="Managecourses_titleText">Hallitse kursseja</string>
+    <string name="Managecourses_titleText">Ilmoittaudu kurssille:</string>
+    <string name="Managecourses_listTitleText">Peru ilmoittautuminen:</string>
 
 </resources>
