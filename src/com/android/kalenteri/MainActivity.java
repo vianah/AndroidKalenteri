@@ -86,17 +86,17 @@ public class MainActivity extends AndroidKalenteriActivity {
 		super.onRestart();
 		//if(resumeCounter > 0) {
 			
-			dataSource.open();
+			/*dataSource.open();
 			//courseData.requery();
 			userCourseView.setAdapter(adapter);
 			adapter.notifyDataSetChanged();
-			dataSource.close();
+			dataSource.close();*/
 			
 		//}
 		//resumeCounter++;
-		/*Intent intent = getIntent();
+		Intent intent = getIntent();
 		finish();
-		startActivity(intent);*/
+		startActivity(intent);
 	}
 	
 	

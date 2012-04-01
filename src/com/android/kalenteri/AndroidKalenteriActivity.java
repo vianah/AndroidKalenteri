@@ -19,7 +19,7 @@ public class AndroidKalenteriActivity extends Activity {
 		super.onCreate(savedInstanceState);
 	}
 	
-	@Override
+	/*@Override
 	protected void onResume() {
 		dataSource.open();
 		super.onResume();
@@ -29,7 +29,7 @@ public class AndroidKalenteriActivity extends Activity {
 	protected void onPause() {
 		dataSource.close();
 		super.onPause();
-	}
+	}*/
 	
 	//bundlesta User -olio
 	protected void createUserFromBundle() {

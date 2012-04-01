@@ -131,10 +131,11 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		listAdapter.notifyDataSetChanged();
 	}
 	
-	@Override
+	/*kaataa ohjelman, kun painaa contextmenusta "deleteä" (siksi otin pois).
+	 * @Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
 		dataSource.close();
-	}
+	}*/
 }
