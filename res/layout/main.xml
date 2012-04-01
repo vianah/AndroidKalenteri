@@ -3,31 +3,33 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="@dimen/Main_margin10dp">
     
-	<TextView
+        <TextView
         android:id="@+id/menu_loggedAs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loggedAs"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-    
-
-    <TextView
-        android:id="@+id/Main_headView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Main_title"
-        android:textSize="@dimen/Main_head"
-        android:layout_gravity="center" />
-
-    <TextView
+        
+          <TextView
         android:id="@+id/Main_pointsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Main_points"
-        android:textSize="@dimen/Main_points"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/Main_points" />
+        android:layout_alignParentRight="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+        
+    
+    </RelativeLayout>
+    
+
+  
 
     <Button
         android:id="@+id/Main_manageCoursesButton"

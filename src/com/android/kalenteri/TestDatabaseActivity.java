@@ -53,7 +53,7 @@ public class TestDatabaseActivity extends ListActivity {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				failureInfo.setText(new Boolean(datasource.userToCourse(1, 1)).toString());
+				failureInfo.setText(new Boolean(datasource.userToCourse(1, 2)).toString());
 			}
 		});
 	}

@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 public class UserCourseDatabase {
+	
 	private SQLiteDatabase database;
 	private DbSQLiteHelper dbHelper;
 	private String[] allUserColumns = {DbSQLiteHelper.USER_COLUMN_ID, DbSQLiteHelper.USER_COLUMN_USERNAME, 
@@ -21,6 +22,7 @@ public class UserCourseDatabase {
 	private String[] allCourseColumns = {DbSQLiteHelper.COURSES_COLUMN_ID, DbSQLiteHelper.COURSES_COLUMN_NAME, 
 			DbSQLiteHelper.COURSES_COLUMN_POINTS};
 
+	
 	public UserCourseDatabase(Context context) {
 		// TODO Auto-generated constructor stub
 		dbHelper = new DbSQLiteHelper(context);
@@ -151,6 +153,26 @@ public class UserCourseDatabase {
 			cursor.moveToFirst();
 			return cursor;
 		}
+	}
+	//käyttäjän opintopisteet
+	public int getUserPoints(User user) {
+		String[] values = {Integer.toString(user.getUserID())};
+		
+		Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
+				"courses.points " +
+				"FROM takes, courses WHERE takes.user_id=? " + 
+				"AND takes.course_id=courses._id", values);
+		
+		int points = 0;
+		if(cursor.moveToFirst()) {
+			
+			while(!cursor.isAfterLast()) {
+				points += cursor.getLong(cursor.getColumnIndex("points"));
+				cursor.moveToNext();
+			}
+			
+		}
+		return points;
 	}
 	
 	

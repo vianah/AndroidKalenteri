@@ -30,14 +30,17 @@ public class MainActivity extends AndroidKalenteriActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
+		dataSource = new UserCourseDatabase(this);
+		dataSource.open();
+		
+		super.createUserFromBundle();
+		
 		userCourseView = (ListView) findViewById(R.id.Main_courseList);
 		
 		pointsInfo = (TextView) findViewById(R.id.Main_pointsView);
-		// pointsInfo.setText(""); tähän pisteet tietokannasta
+		pointsInfo.setText("CP: " + dataSource.getUserPoints(user)); //tähän pisteet tietokannasta
 		
 		manageCoursesButton = (Button) findViewById(R.id.Main_manageCoursesButton);
-		
-		super.createUserFromBundle();
 		
 		loggedAs = (TextView) findViewById(R.id.menu_loggedAs);
 		loggedAs.setText("Logged as: "+extras.getString("userName"));
@@ -53,8 +56,6 @@ public class MainActivity extends AndroidKalenteriActivity {
 		
 		//näkymä käyttäjän kursseille
 		try {
-			dataSource = new UserCourseDatabase(this);
-			dataSource.open();
 			
 			Cursor courseData = dataSource.getUsersCourses(user);
 			if(courseData.moveToFirst()) {
@@ -62,6 +63,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 						new String [] {"coursename", "points"}, 
 						new int[] {R.id.courseNameView, R.id.CoursePointsView});
 				userCourseView.setAdapter(adapter);
+				adapter.notifyDataSetChanged();
 				dataSource.close();
 			}
 					}
@@ -73,9 +75,9 @@ public class MainActivity extends AndroidKalenteriActivity {
 	}
 
 	/*@Override
-	protected void onResume() {
+	protected void onStart() {
 		// TODO Auto-generated method stub
-		super.onResume();
+		super.onStart();
 		adapter.notifyDataSetChanged();
 	}*/
 	
