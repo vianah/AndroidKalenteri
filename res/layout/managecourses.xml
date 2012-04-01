@@ -45,16 +45,24 @@
             android:layout_height="wrap_content"
             android:text="@string/Managecourses_listTitleText"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   			android:layout_width="fill_parent"
+    		android:layout_height="fill_parent"
+    		android:orientation="vertical" 
+    		android:background="#000000">
 
-        <ListView
-            android:id="@+id/Managecourses_activeCoursesList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/Main_head"
-            android:layout_marginRight="@dimen/Main_head"
-            android:layout_marginBottom="@dimen/Main_head" >
-        </ListView>
-
+	        <ListView
+	            android:id="@+id/Managecourses_activeCoursesList"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_margin="@dimen/Main_head"
+	            android:background="#FFFFFF"
+	            android:layout_weight="0"
+	        	android:divider="#000000"
+	        	android:dividerHeight="2dp" >
+        	</ListView>
+		</LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
