@@ -12,6 +12,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
 
 public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	
@@ -52,11 +53,15 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 					announcement.show();
 				}
 		
-		// spinner-kokeilu
-		/*ArrayAdapter adapteri = ArrayAdapter.createFromResource(this, R.array.kurssit_array, android.R.layout.simple_spinner_item);
-		adapteri.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	    courseSpinner.setAdapter(adapteri);
-	    */
+		enrollButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				int item = (int) courseSpinner.getSelectedItemId();
+				announcement = Toast.makeText(getApplicationContext(), ""+item, Toast.LENGTH_LONG);
+				announcement.show();
+			}
+		});
 	}
 
 }
