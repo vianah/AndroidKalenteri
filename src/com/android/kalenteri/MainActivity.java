@@ -48,7 +48,8 @@ public class MainActivity extends AndroidKalenteriActivity {
 		manageCoursesButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				Intent intent = new Intent(getApplicationContext(), ManageCoursesActivity.class);
+				//Intent intent = new Intent(getApplicationContext(), ManageCoursesActivity.class);
+				Intent intent = makeIntentWithUserBundle(ManageCoursesActivity.class);
 				startActivity(intent);
 				
 			}
@@ -66,7 +67,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 				adapter.notifyDataSetChanged();
 				dataSource.close();
 			}
-					}
+		}
 				catch(DatabaseException e) {
 					announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
 					announcement.show();

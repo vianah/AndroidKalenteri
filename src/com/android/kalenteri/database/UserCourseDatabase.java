@@ -131,8 +131,8 @@ public class UserCourseDatabase {
 	//kurssit, joissa käyttäjä ei ole
 	public Cursor getNonUsersCourses(User user) throws DatabaseException {
 		String[] values = {Integer.toString(user.getUserID())};
-		Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
-				"courses.name as coursename, courses.points, takes.finished " +
+		Cursor cursor = database.rawQuery("SELECT courses._id," +
+				"courses.name as coursename " +
 				"FROM takes, courses WHERE takes.user_id!=? " + 
 				"AND takes.course_id=courses._id", values);
 		if(cursor.getCount() == 0) {

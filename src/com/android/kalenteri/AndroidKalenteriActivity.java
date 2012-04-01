@@ -1,6 +1,7 @@
 package com.android.kalenteri;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -23,6 +24,14 @@ public class AndroidKalenteriActivity extends Activity {
 		extras = this.getIntent().getExtras();
 		user = new User(extras.getInt("userID"), 
 				extras.getString("userName"), extras.getInt("userType"));
+	}
+	/*
+	 * 	@pre extras != null
+	 */
+	protected Intent makeIntentWithUserBundle(Class<?> cls) {
+		Intent intent = new Intent(getApplicationContext(), cls);
+		if(this.extras != null) intent.putExtras(extras);
+		return intent;
 	}
 
 }
