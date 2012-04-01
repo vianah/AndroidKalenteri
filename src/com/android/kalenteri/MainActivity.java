@@ -22,7 +22,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 	private Button manageCoursesButton;
 	private ListView userCourseView;
 	private SimpleCursorAdapter adapter;
-	// listView:n esittely
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,8 @@ public class MainActivity extends AndroidKalenteriActivity {
 		manageCoursesButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				// Intent intent = new Intent(getApplicationContext(), "kurssienhallinnointi".class);
-				// startActivity(intent);
+				Intent intent = new Intent(getApplicationContext(), ManageCoursesActivity.class);
+				startActivity(intent);
 				
 			}
 		});
