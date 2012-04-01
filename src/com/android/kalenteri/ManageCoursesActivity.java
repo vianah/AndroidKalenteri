@@ -21,6 +21,8 @@ import android.view.View.OnClickListener;
 
 public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	
+	
+
 	private Spinner courseSpinner;
 	private Button enrollButton;
 	private ListView activeCoursesList;
@@ -127,5 +129,12 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		
 		courseData.requery();
 		listAdapter.notifyDataSetChanged();
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		dataSource.close();
 	}
 }

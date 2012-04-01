@@ -80,14 +80,14 @@ public class MainActivity extends AndroidKalenteriActivity {
 	}
 	
 	
-	/*@Override
+	@Override
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
 		//if(resumeCounter > 0) {
 			
 			dataSource.open();
-			courseData.requery();
+			//courseData.requery();
 			userCourseView.setAdapter(adapter);
 			adapter.notifyDataSetChanged();
 			dataSource.close();
@@ -96,8 +96,8 @@ public class MainActivity extends AndroidKalenteriActivity {
 		//resumeCounter++;
 		/*Intent intent = getIntent();
 		finish();
-		startActivity(intent);
-	}*/
+		startActivity(intent);*/
+	}
 	
 	
 	
