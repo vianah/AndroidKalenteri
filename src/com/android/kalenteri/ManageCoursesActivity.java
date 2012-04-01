@@ -28,7 +28,6 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	private Cursor spinnerData;
 	private SimpleCursorAdapter listAdapter;
 	private Cursor courseData;
-	private int courseIdHelp;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,8 +108,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
 		    Cursor cur = (Cursor) activeCoursesList.getItemAtPosition(info.position);
 		    menu.setHeaderTitle(cur.getString(1));
-		    courseIdHelp = (int)cur.getLong(4);
-		    menu.add(ContextMenu.NONE, (int) cur.getLong(0), ContextMenu.NONE, "DELETE");
+		    menu.add(ContextMenu.NONE, (int) cur.getLong(4), ContextMenu.NONE, "DELETE");
 		}
 	   }
 	

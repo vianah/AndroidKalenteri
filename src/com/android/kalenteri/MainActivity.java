@@ -24,6 +24,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 	private ListView userCourseView;
 	private SimpleCursorAdapter adapter;
 	private Cursor courseData;
+	private static int resumeCounter = 0;
 	
 
 	@Override
@@ -34,6 +35,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 		
 		dataSource = new UserCourseDatabase(this);
 		dataSource.open();
+		
 		
 		super.createUserFromBundle();
 		
@@ -60,7 +62,6 @@ public class MainActivity extends AndroidKalenteriActivity {
 		
 		//näkymä käyttäjän kursseille
 		try {
-			
 			courseData = dataSource.getUsersCourses(user);
 			if(courseData.moveToFirst()) {
 				adapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
@@ -79,17 +80,24 @@ public class MainActivity extends AndroidKalenteriActivity {
 	}
 	
 	
-	@Override
-	protected void onResume() {
+	/*@Override
+	protected void onRestart() {
 		// TODO Auto-generated method stub
-		super.onResume();
-		//courseData.requery();
-		userCourseView.setAdapter(adapter);
-		adapter.notifyDataSetChanged();
+		super.onRestart();
+		//if(resumeCounter > 0) {
+			
+			dataSource.open();
+			courseData.requery();
+			userCourseView.setAdapter(adapter);
+			adapter.notifyDataSetChanged();
+			dataSource.close();
+			
+		//}
+		//resumeCounter++;
 		/*Intent intent = getIntent();
 		finish();
-		startActivity(intent);*/
-	}
+		startActivity(intent);
+	}*/
 	
 	
 	
