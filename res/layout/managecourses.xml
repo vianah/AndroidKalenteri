@@ -20,6 +20,7 @@
         android:layout_below="@+id/Managecourses_headView"
         android:layout_marginLeft="44dp"
         android:layout_marginTop="17dp"
+        android:layout_marginBottom="@dimen/Main_margin10dp"
         android:prompt="@string/Managecourses_spinnerPrompt" />
 
     <Button
@@ -30,5 +31,30 @@
         android:layout_marginLeft="57dp"
         android:layout_toRightOf="@+id/Managecourses_spinner"
         android:text="@string/Managecourses_enrollText" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/Managecourses_spinner"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/Managecourses_listTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Managecourses_listTitleText"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ListView
+            android:id="@+id/Managecourses_activeCoursesList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/Main_head"
+            android:layout_marginRight="@dimen/Main_head"
+            android:layout_marginBottom="@dimen/Main_head" >
+        </ListView>
+
+    </LinearLayout>
 
 </RelativeLayout>
