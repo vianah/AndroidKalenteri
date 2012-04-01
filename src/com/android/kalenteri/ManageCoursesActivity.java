@@ -19,7 +19,8 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	private Spinner courseSpinner;
 	private Button enrollButton;
 	private ListView activeCoursesList;
-	private SimpleCursorAdapter adapter;
+	private SimpleCursorAdapter spinnerAdapter;
+	private Cursor courseData;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +39,13 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		
 		try {
 			
-			Cursor courseData = dataSource.getNonUsersCourses(user);
+			courseData = dataSource.getNonUsersCourses(user);
 			if(courseData.moveToFirst()) {
-				adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, courseData, 
+				spinnerAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, courseData, 
 						new String [] {"coursename"}, 
 						new int[] {android.R.id.text1});
-				adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-				courseSpinner.setAdapter(adapter);
-				dataSource.close();
+				spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				courseSpinner.setAdapter(spinnerAdapter);
 				}
 			}
 				catch(DatabaseException e) {
@@ -57,8 +57,14 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				int item = (int) courseSpinner.getSelectedItemId();
-				announcement = Toast.makeText(getApplicationContext(), ""+item, Toast.LENGTH_LONG);
+				int courseId = (int) courseSpinner.getSelectedItemId();
+				int userId = user.getUserID();
+				
+				dataSource.userToCourse(userId, courseId);
+				courseData.requery();
+				spinnerAdapter.notifyDataSetChanged();
+				
+				announcement = Toast.makeText(getApplicationContext(), "Ilmoittautuminen onnistui!", Toast.LENGTH_LONG);
 				announcement.show();
 			}
 		});
