@@ -16,7 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AndroidKalenteriActivity {
-	
+
+
 	private TextView pointsInfo;
 	private TextView loggedAs;
 	private Button manageCoursesButton;
@@ -52,7 +53,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 				//Intent intent = new Intent(getApplicationContext(), ManageCoursesActivity.class);
 				Intent intent = makeIntentWithUserBundle(ManageCoursesActivity.class);
 				startActivity(intent);
-				finish();
+				
 				
 			}
 		});
@@ -76,7 +77,19 @@ public class MainActivity extends AndroidKalenteriActivity {
 				}		
 		
 	}
-
+	
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		//courseData.requery();
+		userCourseView.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
+		/*Intent intent = getIntent();
+		finish();
+		startActivity(intent);*/
+	}
 	
 	
 	
