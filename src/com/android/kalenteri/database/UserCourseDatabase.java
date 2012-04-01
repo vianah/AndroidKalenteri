@@ -178,6 +178,13 @@ public class UserCourseDatabase {
 		return points;
 	}
 	
+	public boolean deleteUserFromCourse (int userId, int courseId) {
+		return database.delete(DbSQLiteHelper.TABLE_TAKES, 
+				DbSQLiteHelper.TAKES_COLUMN_USER_ID + "=" +
+				userId + " AND " + DbSQLiteHelper.TAKES_COLUMN_COURSE_ID + 
+				"=" + courseId, null) > 0;
+	}
+	
 	
 	
 	
