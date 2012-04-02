@@ -164,7 +164,7 @@ public class UserCourseDatabase {
 		Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
 				"courses.points " +
 				"FROM takes, courses WHERE takes.user_id=? " + 
-				"AND takes.course_id=courses._id", values);
+				"AND takes.course_id=courses._id AND takes.finished!=0", values);
 		
 		int points = 0;
 		if(cursor.moveToFirst()) {
@@ -211,6 +211,17 @@ public class UserCourseDatabase {
 		else {
 			cursor.moveToFirst();
 			return cursor;
+		}
+	}
+	//Tarkistus onko kurssi jo tietokannassa
+	public boolean doesCourseExist(String courseName) {
+		String[] args = {courseName};
+		Cursor cursor = database.rawQuery("SELECT * FROM courses where name=?", args);
+		if(cursor.moveToFirst()) {
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 	

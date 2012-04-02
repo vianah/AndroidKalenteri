@@ -40,7 +40,7 @@ public class AndroidKalenteriActivity extends Activity {
 	/*
 	 * 	@pre extras != null
 	 */
-	protected Intent makeIntentWithUserBundle(Class<?> cls) {
+	protected Intent getIntentWithUserBundle(Class<?> cls) {
 		Intent intent = new Intent(getApplicationContext(), cls);
 		if(this.extras != null) intent.putExtras(extras);
 		return intent;

@@ -8,6 +8,7 @@ import com.android.kalenteri.database.UserCourseDatabase;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,7 +25,6 @@ public class MainActivity extends AndroidKalenteriActivity {
 	private ListView userCourseView;
 	private SimpleCursorAdapter adapter;
 	private Cursor courseData;
-	private static int resumeCounter = 0;
 	
 
 	@Override
@@ -53,7 +53,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 			
 			public void onClick(View v) {
 				//Intent intent = new Intent(getApplicationContext(), ManageCoursesActivity.class);
-				Intent intent = makeIntentWithUserBundle(ManageCoursesActivity.class);
+				Intent intent = getIntentWithUserBundle(ManageCoursesActivity.class);
 				startActivity(intent);
 				
 				
@@ -65,7 +65,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 			courseData = dataSource.getUsersCourses(user);
 			if(courseData.moveToFirst()) {
 				adapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
-						new String [] {"coursename", "points"}, 
+						new String [] {"coursename", "finished"}, 
 						new int[] {R.id.courseNameView, R.id.CoursePointsView});
 				userCourseView.setAdapter(adapter);
 				adapter.notifyDataSetChanged();
@@ -84,19 +84,24 @@ public class MainActivity extends AndroidKalenteriActivity {
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
-		//if(resumeCounter > 0) {
-			
-			/*dataSource.open();
-			//courseData.requery();
-			userCourseView.setAdapter(adapter);
-			adapter.notifyDataSetChanged();
-			dataSource.close();*/
-			
-		//}
-		//resumeCounter++;
+		
 		Intent intent = getIntent();
 		finish();
 		startActivity(intent);
+	}
+	
+	//back napppulasta takaisin LoginActivityyn
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	
+	    	announcement = Toast.makeText(getApplicationContext(), "Logging out...", Toast.LENGTH_SHORT);
+	    	announcement.show();
+	    	startActivity(getIntentWithUserBundle(LoginActivity.class));
+	        finish();
+	    }
+	    return super.onKeyDown(keyCode, event);
 	}
 	
 	

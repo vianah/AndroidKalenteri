@@ -46,22 +46,14 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		enrollButton = (Button) findViewById(R.id.Managecourses_button);
 		activeCoursesList = (ListView) findViewById(R.id.Managecourses_activeCoursesList);
 		
-		try {
-			
-			spinnerData = dataSource.getNonUsersCourses(user);
-			
-			spinnerAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, spinnerData, 
-					new String [] {"coursename"}, 
-					new int[] {android.R.id.text1});
-			spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			courseSpinner.setAdapter(spinnerAdapter);
-				
-		}
-		catch(DatabaseException e) {
-			announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
-			announcement.show();
-		}
+		//t‰ytt‰‰ spinnerin
+		bindSpinner();
 		
+		//t‰ytt‰‰ ListViewin
+		bindListView();
+		
+		//liitt‰‰ context menuun
+		registerForContextMenu(activeCoursesList);
 		
 		enrollButton.setOnClickListener(new OnClickListener() {
 			
@@ -85,26 +77,6 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 				
 			}
 		});
-		
-		try {
-			
-			courseData = dataSource.getUsersCourses(user);
-		
-			listAdapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
-					new String [] {"coursename", "points"}, 
-					new int[] {R.id.courseNameView, R.id.CoursePointsView});
-			activeCoursesList.setAdapter(listAdapter);
-			
-		}
-		catch(DatabaseException e) {
-			announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
-			announcement.show();
-		}
-		
-		registerForContextMenu(activeCoursesList);
-		
-		
-		
 		
 	}
 	
@@ -135,10 +107,53 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 			spinnerData.requery();
 			spinnerAdapter.notifyDataSetChanged();
 		}
+		else {
+			bindSpinner();
+		}
 		if(courseData != null) {
 			
 			courseData.requery();
 			listAdapter.notifyDataSetChanged();
+		}
+		else {
+			bindListView();
+		}
+	}
+	//asettaa datan spinneriin
+	private void bindSpinner() {
+		try {
+			if(spinnerData == null) {
+				spinnerData = dataSource.getNonUsersCourses(user);
+			}
+			if(spinnerData.moveToFirst()) {
+				spinnerAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, spinnerData, 
+						new String [] {"coursename"}, 
+						new int[] {android.R.id.text1});
+				spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				courseSpinner.setAdapter(spinnerAdapter);
+			}			
+		}
+		catch(DatabaseException e) {
+			announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
+			announcement.show();
+		}
+	}
+	//asettaa datan k‰ytt‰j‰n kurssi listaan
+	private void bindListView() {
+		try {
+			if(courseData == null) {
+				courseData = dataSource.getUsersCourses(user);
+			}
+			if(courseData.moveToFirst()) {
+				listAdapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
+					new String [] {"coursename", "finished"}, 
+					new int[] {R.id.courseNameView, R.id.CoursePointsView});
+				activeCoursesList.setAdapter(listAdapter);
+			}
+		}
+		catch(DatabaseException e) {
+			announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
+			announcement.show();
 		}
 	}
 	

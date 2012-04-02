@@ -4,11 +4,13 @@ import com.android.kalenteri.database.User;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AdminMainActivity extends AndroidKalenteriActivity {
 
@@ -33,8 +35,7 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), CreateCourseActivity.class);
-				intent.putExtras(extras);
+				Intent intent = getIntentWithUserBundle(CreateCourseActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -44,11 +45,34 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), AcceptUserCourseActivity.class);
-				intent.putExtras(extras);
+				Intent intent = getIntentWithUserBundle(AcceptUserCourseActivity.class);
 				startActivity(intent);
 			}
 		});
 		
+	}
+	
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		
+		Intent intent = getIntent();
+		finish();
+		startActivity(intent);
+	}
+	
+	//back napppulasta takaisin LoginActivityyn
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	
+	    	announcement = Toast.makeText(getApplicationContext(), "Logging out...", Toast.LENGTH_SHORT);
+	    	announcement.show();
+	    	startActivity(getIntentWithUserBundle(LoginActivity.class));
+	        finish();
+	    }
+	    return super.onKeyDown(keyCode, event);
 	}
 }
