@@ -184,8 +184,34 @@ public class UserCourseDatabase {
 				userId + " AND " + DbSQLiteHelper.TAKES_COLUMN_COURSE_ID + 
 				"=" + courseId, null) > 0;
 	}
+	//käyttäjä läpäisee kurssin
+	public boolean acceptUsersCourse(int courseId, User user, int grade) {
+		ContentValues values = new ContentValues();
+		values.put(DbSQLiteHelper.TAKES_COLUMN_FINISHED, grade);
+		String[] whereArgs = {Integer.toString(courseId), Integer.toString(user.getUserID())}; 
+		String whereClause = DbSQLiteHelper.TAKES_COLUMN_COURSE_ID + "=? AND "+ 
+		DbSQLiteHelper.TAKES_COLUMN_USER_ID + "=?";
+		int updateId = database.update(DbSQLiteHelper.TABLE_TAKES, values, whereClause, whereArgs);
+		return (updateId == 1);
+	}
 	
-	
-	
+	//käyttäjät kurssilla
+	public Cursor usersOnCourse(int courseId) throws DatabaseException {
+		String[] values = {Integer.toString(courseId)};
+		
+		Cursor cursor = database.rawQuery("SELECT takes.user_id as _id, " +
+				"users." + DbSQLiteHelper.USER_COLUMN_USERNAME + ", " +
+				"takes.finished " +
+				"FROM takes, users WHERE takes.user_id=? " + 
+				"AND takes.user_id=users._id", values);
+		
+		if(cursor.getCount()== 0) {
+			throw new DatabaseException("No users on course!");
+		}
+		else {
+			cursor.moveToFirst();
+			return cursor;
+		}
+	}
 	
 }

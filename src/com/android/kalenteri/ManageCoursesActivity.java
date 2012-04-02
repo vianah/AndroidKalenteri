@@ -49,23 +49,25 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		try {
 			
 			spinnerData = dataSource.getNonUsersCourses(user);
-			if(spinnerData.moveToFirst()) {
-				spinnerAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, spinnerData, 
-						new String [] {"coursename"}, 
-						new int[] {android.R.id.text1});
-				spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-				courseSpinner.setAdapter(spinnerAdapter);
-				}
-			}
-				catch(DatabaseException e) {
-					announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
-					announcement.show();
-				}
+			
+			spinnerAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, spinnerData, 
+					new String [] {"coursename"}, 
+					new int[] {android.R.id.text1});
+			spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			courseSpinner.setAdapter(spinnerAdapter);
+				
+		}
+		catch(DatabaseException e) {
+			announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
+			announcement.show();
+		}
+		
 		
 		enrollButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
 				long courseId = courseSpinner.getSelectedItemId();
 				int userId = user.getUserID();
 				
@@ -80,25 +82,27 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 				announcement = Toast.makeText(getApplicationContext(), "Ilmoittautuminen onnistui!", Toast.LENGTH_LONG);
 				announcement.show();
 				}
+				
 			}
 		});
 		
 		try {
 			
 			courseData = dataSource.getUsersCourses(user);
-			if(courseData.moveToFirst()) {
-				listAdapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
-						new String [] {"coursename", "points"}, 
-						new int[] {R.id.courseNameView, R.id.CoursePointsView});
-				activeCoursesList.setAdapter(listAdapter);
-			}
+		
+			listAdapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
+					new String [] {"coursename", "points"}, 
+					new int[] {R.id.courseNameView, R.id.CoursePointsView});
+			activeCoursesList.setAdapter(listAdapter);
+			
 		}
 		catch(DatabaseException e) {
-				announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
-				announcement.show();
+			announcement = Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
+			announcement.show();
 		}
 		
 		registerForContextMenu(activeCoursesList);
+		
 		
 		
 		
@@ -116,24 +120,32 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
+		
 		boolean success = dataSource.deleteUserFromCourse(user.getUserID(), item.getItemId());
 		listUpdate();
+		
 		announcement = Toast.makeText(this,success + " " + item.getItemId(), Toast.LENGTH_LONG);
 		announcement.show();
 		return success;
 	}
 	
 	private void listUpdate() {
-		spinnerData.requery();
-		spinnerAdapter.notifyDataSetChanged();
+		if(spinnerData != null) {
 		
-		courseData.requery();
-		listAdapter.notifyDataSetChanged();
+			spinnerData.requery();
+			spinnerAdapter.notifyDataSetChanged();
+		}
+		if(courseData != null) {
+			
+			courseData.requery();
+			listAdapter.notifyDataSetChanged();
+		}
 	}
 	
 	/*kaataa ohjelman, kun painaa contextmenusta "deleteä" (siksi otin pois).
 	 * @Override
-	protected void onStop() {
+	 */
+	/*protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onStop();
 		dataSource.close();
