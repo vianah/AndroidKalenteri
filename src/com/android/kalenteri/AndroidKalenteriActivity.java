@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.text.format.Time;
 
 import com.android.kalenteri.database.*;
 
@@ -13,6 +14,8 @@ public class AndroidKalenteriActivity extends Activity {
 	protected UserCourseDatabase dataSource;
 	protected Toast announcement;
 	protected Bundle extras;
+	protected Time theTime;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -45,5 +48,14 @@ public class AndroidKalenteriActivity extends Activity {
 		if(this.extras != null) intent.putExtras(extras);
 		return intent;
 	}
+	
+	// Palauttaa p‰iv‰m‰‰r‰n ja kellonajan muodossa: " DD/MM/YYYY HH:MM"
+	protected String getTime() {
+		theTime = new Time();
+		theTime.setToNow();
+		int offset = Integer.parseInt(theTime.format("%H")) + 3;
+		return theTime.format(" %d/%m/%Y " + ""+offset + ":%M");
+	}
+	
 
 }

@@ -70,7 +70,7 @@ public class CreateCourseActivity extends AndroidKalenteriActivity {
 							Integer.parseInt(coursePointsBox.getText().toString()));
 						
 						if(completed) {
-							announcement =Toast.makeText(getApplicationContext(), "Course added!", Toast.LENGTH_SHORT);
+							announcement =Toast.makeText(getApplicationContext(), "Course added!" + getTime(), Toast.LENGTH_SHORT);
 							announcement.show();
 							finish();
 						}

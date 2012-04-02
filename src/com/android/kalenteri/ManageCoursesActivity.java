@@ -21,8 +21,6 @@ import android.view.View.OnClickListener;
 
 public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	
-	
-
 	private Spinner courseSpinner;
 	private Button enrollButton;
 	private ListView activeCoursesList;
@@ -71,7 +69,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 				dataSource.userToCourse(userId, (int)courseId);
 				listUpdate();
 				
-				announcement = Toast.makeText(getApplicationContext(), "Ilmoittautuminen onnistui!", Toast.LENGTH_LONG);
+				announcement = Toast.makeText(getApplicationContext(), "Ilmoittautuminen onnistui!" + getTime(), Toast.LENGTH_LONG);
 				announcement.show();
 				}
 				
@@ -96,7 +94,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		boolean success = dataSource.deleteUserFromCourse(user.getUserID(), item.getItemId());
 		listUpdate();
 		
-		announcement = Toast.makeText(this,success + " " + item.getItemId(), Toast.LENGTH_LONG);
+		announcement = Toast.makeText(this, "Enrollment cancelled!" + getTime(), Toast.LENGTH_LONG);
 		announcement.show();
 		return success;
 	}
