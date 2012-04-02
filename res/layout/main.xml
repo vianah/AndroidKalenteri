@@ -27,9 +27,6 @@
         
     
     </RelativeLayout>
-    
-
-  
 
     <Button
         android:id="@+id/Main_manageCoursesButton"
@@ -47,18 +44,52 @@
         android:text="@string/Main_listTitle"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="@dimen/Main_margin10dp" />
+
+    
 	
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" 
-    android:background="#000000">
+    android:background="#9E9E9E">
+          
+	    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp">
+
+	        <TextView
+	            android:id="@+id/main_tableColumnName"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:textColor="#FFFFFF"
+	            android:text="Course Name" />
+	
+	        <TextView
+	            android:id="@+id/main_tableColumnGrade"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:textColor="#FFFFFF"
+	            android:text="Grade" />
+	
+	        <TextView
+	            android:id="@+id/main_tableColumnPoints"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:textColor="#FFFFFF"
+	            android:text="Course Points" />
+
+    	</RelativeLayout>
     	
     	<ListView
         	android:id="@+id/Main_courseList"
         	android:layout_width="fill_parent"
         	android:layout_height="fill_parent"        	
-        	android:layout_margin="@dimen/Main_margin10dp"
+        	android:layout_margin="4dp"
         	android:background="#FFFFFF"
         	android:layout_weight="0"
         	android:divider="#000000"

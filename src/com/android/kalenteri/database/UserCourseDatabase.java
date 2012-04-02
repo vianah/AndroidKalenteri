@@ -148,7 +148,7 @@ public class UserCourseDatabase {
 	}
 	
 	public Cursor getAllCourses() throws DatabaseException{
-		Cursor cursor = database.rawQuery("SELECT * FROM courses", null);
+		Cursor cursor = database.rawQuery("SELECT _id, name as coursename, points FROM courses", null);
 		if(cursor.getCount()== 0) {
 			throw new DatabaseException("No Courses exists!");
 		}

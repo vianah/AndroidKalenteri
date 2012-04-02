@@ -65,8 +65,8 @@ public class MainActivity extends AndroidKalenteriActivity {
 			courseData = dataSource.getUsersCourses(user);
 			if(courseData.moveToFirst()) {
 				adapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
-						new String [] {"coursename", "finished"}, 
-						new int[] {R.id.courseNameView, R.id.CoursePointsView});
+						new String [] {"coursename", "finished", "points"}, 
+						new int[] {R.id.courseNameView, R.id.CourseGradeView,R.id.CoursePointsView});
 				userCourseView.setAdapter(adapter);
 				adapter.notifyDataSetChanged();
 				dataSource.close();

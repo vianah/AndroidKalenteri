@@ -50,13 +50,38 @@
    			android:layout_width="fill_parent"
     		android:layout_height="fill_parent"
     		android:orientation="vertical" 
-    		android:background="#000000">
+    		android:background="#9E9E9E">
+    		
+             <RelativeLayout
+		        android:id="@+id/relativeLayout2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="3dp">
+
+		        <TextView
+		            android:id="@+id/main_tableColumnName"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentLeft="true"
+		            android:textColor="#FFFFFF"
+		            android:text="Course Name" />
+		
+		
+		        <TextView
+	            android:id="@+id/main_tableColumnPoints"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:textColor="#FFFFFF"
+	            android:text="Course Points" />
+
+    		</RelativeLayout>
 
 	        <ListView
 	            android:id="@+id/Managecourses_activeCoursesList"
 	            android:layout_width="fill_parent"
 	            android:layout_height="fill_parent"
-	            android:layout_margin="@dimen/Main_head"
+	            android:layout_margin="4dp"
 	            android:background="#FFFFFF"
 	            android:layout_weight="0"
 	        	android:divider="#000000"

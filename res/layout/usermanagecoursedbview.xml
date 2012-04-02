@@ -4,7 +4,7 @@
     android:layout_height="fill_parent">
 
     <TextView
-        android:id="@+id/courseNameView"
+        android:id="@+id/manageNameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
@@ -12,17 +12,9 @@
         android:textColor="#000000" 
         android:layout_alignParentLeft="true"/>
     
-    <TextView
-        android:id="@+id/CourseGradeView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Grade"
-        android:textAppearance="?android:attr/textAppearanceMedium" 
-        android:layout_centerHorizontal="true"
-        android:textColor="#000000"/>
 
     <TextView
-        android:id="@+id/CoursePointsView"
+        android:id="@+id/managePointsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Points"

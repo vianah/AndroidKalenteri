@@ -145,9 +145,9 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 				courseData = dataSource.getUsersCourses(user);
 			}
 			if(courseData.moveToFirst()) {
-				listAdapter = new SimpleCursorAdapter(this, R.layout.usermaindbview, courseData, 
-					new String [] {"coursename", "finished"}, 
-					new int[] {R.id.courseNameView, R.id.CoursePointsView});
+				listAdapter = new SimpleCursorAdapter(this, R.layout.usermanagecoursedbview, courseData, 
+					new String [] {"coursename", "points"}, 
+					new int[] {R.id.manageNameView, R.id.managePointsView});
 				activeCoursesList.setAdapter(listAdapter);
 			}
 		}
