@@ -49,12 +49,12 @@ public class AndroidKalenteriActivity extends Activity {
 		return intent;
 	}
 	
-	// Palauttaa p‰iv‰m‰‰r‰n ja kellonajan muodossa: " DD/MM/YYYY HH:MM"
+	// Palauttaa p‰iv‰m‰‰r‰n ja kellonajan muodossa: "\nDD/MM/YYYY HH:MM"
 	protected String getTime() {
 		theTime = new Time();
 		theTime.setToNow();
 		int offset = Integer.parseInt(theTime.format("%H")) + 3;
-		return theTime.format(" %d/%m/%Y " + ""+offset + ":%M");
+		return theTime.format("\n%d/%m/%Y " + ""+offset + ":%M");
 	}
 	
 
