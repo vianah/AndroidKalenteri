@@ -128,6 +128,20 @@ public class UserCourseDatabase {
 		}
 		return users;
 	}
+	/*
+	 *  Tekee saman kuin ylläoleva haku, mutta palauttaa cursorin. Hakee siis kaikki käyttäjät
+	 *  (tai lähinnä niiden nimet, muilla tiedoilla ei ole niin väliä)
+	 */
+	public Cursor dbGetAllUsers() throws DatabaseException{
+		Cursor cursor = database.rawQuery("SELECT _id, username FROM users", null);
+		if(cursor.getCount()== 0) {
+			throw new DatabaseException("No Courses exists!");
+		}
+		else {
+			cursor.moveToFirst();
+			return cursor;
+		}
+	}
 	//kurssit, joissa käyttäjä ei ole
 	public Cursor getNonUsersCourses(User user) throws DatabaseException {
 		String[] values = {Integer.toString(user.getUserID())};
@@ -185,10 +199,10 @@ public class UserCourseDatabase {
 				"=" + courseId, null) > 0;
 	}
 	//käyttäjä läpäisee kurssin
-	public boolean acceptUsersCourse(int courseId, User user, int grade) {
+	public boolean acceptUsersCourse(int courseId, int userId, int grade) {
 		ContentValues values = new ContentValues();
 		values.put(DbSQLiteHelper.TAKES_COLUMN_FINISHED, grade);
-		String[] whereArgs = {Integer.toString(courseId), Integer.toString(user.getUserID())}; 
+		String[] whereArgs = {Integer.toString(courseId), Integer.toString(userId)}; 
 		String whereClause = DbSQLiteHelper.TAKES_COLUMN_COURSE_ID + "=? AND "+ 
 		DbSQLiteHelper.TAKES_COLUMN_USER_ID + "=?";
 		int updateId = database.update(DbSQLiteHelper.TABLE_TAKES, values, whereClause, whereArgs);
@@ -202,8 +216,25 @@ public class UserCourseDatabase {
 		Cursor cursor = database.rawQuery("SELECT takes.user_id as _id, " +
 				"users." + DbSQLiteHelper.USER_COLUMN_USERNAME + ", " +
 				"takes.finished " +
-				"FROM takes, users WHERE takes.user_id=? " + 
+				"FROM takes, users WHERE takes.course_id=? " + 
 				"AND takes.user_id=users._id", values);
+		
+		if(cursor.getCount()== 0) {
+			throw new DatabaseException("No users on course!");
+		}
+		else {
+			cursor.moveToFirst();
+			return cursor;
+		}
+	}
+	public Cursor usersOnCourseNotFinished(int courseId) throws DatabaseException {
+		String[] values = {Integer.toString(courseId)};
+		
+		Cursor cursor = database.rawQuery("SELECT takes.user_id as _id, " +
+				"users." + DbSQLiteHelper.USER_COLUMN_USERNAME + ", " +
+				"takes.finished " +
+				"FROM takes, users WHERE takes.course_id=? " + 
+				"AND takes.user_id=users._id AND takes.finished=0", values);
 		
 		if(cursor.getCount()== 0) {
 			throw new DatabaseException("No users on course!");

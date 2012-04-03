@@ -30,5 +30,7 @@
     <string name="Managecourses_enrollText">Enroll</string>
     <string name="Managecourses_titleText">Enroll on a course:</string>
     <string name="Managecourses_listTitleText">Cancel enrollment:</string>
+    <string name="Acceptcourses_titleText">Select course:</string>
+    <string name="Acceptcourses_listTitleText">Accept user:</string>
 
 </resources>
