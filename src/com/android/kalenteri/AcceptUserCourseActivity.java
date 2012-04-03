@@ -92,7 +92,6 @@ public class AcceptUserCourseActivity extends AndroidKalenteriActivity {
 	}
 	
 	private void listUpdate() {
-		Log.e("listUpdate", "updatee");
 		bindUserSpinner();
 	}
 	
