@@ -96,8 +96,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	    	
-	    	announcement = Toast.makeText(getApplicationContext(), "Logging out..." + getTime(), Toast.LENGTH_SHORT);
-	    	announcement.show();
+	    	getToastWithTimelable("Logging out...");
 	    	startActivity(getIntentWithUserBundle(LoginActivity.class));
 	        finish();
 	    }

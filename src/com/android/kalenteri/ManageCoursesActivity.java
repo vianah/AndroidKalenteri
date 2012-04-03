@@ -69,8 +69,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 				dataSource.userToCourse(userId, (int)courseId);
 				listUpdate();
 				
-				announcement = Toast.makeText(getApplicationContext(), "Ilmoittautuminen onnistui!" + getTime(), Toast.LENGTH_LONG);
-				announcement.show();
+				getToastWithTimelable("Ilmoittautuminen onnistui!");
 				}
 				
 			}
@@ -94,8 +93,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		boolean success = dataSource.deleteUserFromCourse(user.getUserID(), item.getItemId());
 		listUpdate();
 		
-		announcement = Toast.makeText(this, "Enrollment cancelled!" + getTime(), Toast.LENGTH_LONG);
-		announcement.show();
+		getToastWithTimelable("Enrollment cancelled!");
 		return success;
 	}
 	

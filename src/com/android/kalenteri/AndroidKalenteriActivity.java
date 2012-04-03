@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.SimpleTimeZone;
 
 import com.android.kalenteri.database.*;
 
@@ -16,7 +15,7 @@ public class AndroidKalenteriActivity extends Activity {
 	protected UserCourseDatabase dataSource;
 	protected Toast announcement;
 	protected Bundle extras;
-	protected SimpleDateFormat thaTime;
+	protected SimpleDateFormat theTime;
 	
 	
 	@Override
@@ -55,9 +54,15 @@ public class AndroidKalenteriActivity extends Activity {
 	// Palauttaa p‰iv‰m‰‰r‰n ja kellonajan muodossa: "\nDD/MM/YYYY HH:MM"
 	protected String getTime() {
 		
-		thaTime = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		thaTime.setTimeZone(new SimpleTimeZone(10800000, "GMT+03:00"));
-		return "\n" + thaTime.format(new Date());
+		theTime = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return "\n" + theTime.format(new Date());
+	}
+	
+	protected void getToastWithTimelable(String message) {
+		
+		announcement = Toast.makeText(getApplicationContext(), message + getTime(), Toast.LENGTH_SHORT);
+    	announcement.show();
+		
 	}
 	
 

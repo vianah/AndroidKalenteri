@@ -68,6 +68,7 @@ public class LoginActivity extends AndroidKalenteriActivity {
 					flow.putExtra("userType", user.getUserType());
 					flow.putExtra("userID", user.getUserID());
 					dataSource.close();
+					getToastWithTimelable("Login successful!");
 					startActivity(flow);
 					finish();
 				}

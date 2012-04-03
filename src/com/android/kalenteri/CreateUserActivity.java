@@ -78,9 +78,7 @@ public class CreateUserActivity extends AndroidKalenteriActivity {
 					}
 
 					
-					announcement = Toast.makeText(getApplicationContext(), R.string.Createuser_success + getTime(), 
-							Toast.LENGTH_SHORT);
-					announcement.show();
+					getToastWithTimelable("User successfully created!");
 					
 					finish();
 				}
