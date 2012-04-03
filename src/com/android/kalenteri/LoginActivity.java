@@ -16,7 +16,6 @@ import android.text.format.Time;
 
 public class LoginActivity extends AndroidKalenteriActivity {
 	
-	private static String[] userInfo = {"u","p"};
 	private EditText usernameBox;
 	private EditText passwordBox;
 	private Button loginButton;

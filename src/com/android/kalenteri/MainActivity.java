@@ -42,7 +42,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 		userCourseView = (ListView) findViewById(R.id.Main_courseList);
 		
 		pointsInfo = (TextView) findViewById(R.id.Main_pointsView);
-		pointsInfo.setText("CP: " + dataSource.getUserPoints(user)); //tähän pisteet tietokannasta
+		pointsInfo.setText("CP: " + dataSource.getUserPoints(user)); //CP from the database
 		
 		manageCoursesButton = (Button) findViewById(R.id.Main_manageCoursesButton);
 		
@@ -60,7 +60,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 			}
 		});
 		
-		//näkymä käyttäjän kursseille
+		//Shows the user's active courses
 		try {
 			courseData = dataSource.getUsersCourses(user);
 			if(courseData.moveToFirst()) {
@@ -90,7 +90,7 @@ public class MainActivity extends AndroidKalenteriActivity {
 		startActivity(intent);
 	}
 	
-	//back napppulasta takaisin LoginActivityyn
+	// Back to LoginActivity by pressing the return button
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 

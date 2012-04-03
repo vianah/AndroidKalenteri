@@ -92,7 +92,7 @@ public class AdminMainActivity extends AndroidKalenteriActivity {
 		startActivity(intent);
 	}
 	
-	//back napppulasta takaisin LoginActivityyn
+	//back to LoginActivity by pressing the return button
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 

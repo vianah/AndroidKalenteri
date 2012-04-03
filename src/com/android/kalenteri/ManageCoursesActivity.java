@@ -44,13 +44,12 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		enrollButton = (Button) findViewById(R.id.Managecourses_button);
 		activeCoursesList = (ListView) findViewById(R.id.Managecourses_activeCoursesList);
 		
-		//t‰ytt‰‰ spinnerin
+		//fills Spinner
 		bindSpinner();
 		
-		//t‰ytt‰‰ ListViewin
+		//fills ListView
 		bindListView();
 		
-		//liitt‰‰ context menuun
 		registerForContextMenu(activeCoursesList);
 		
 		enrollButton.setOnClickListener(new OnClickListener() {
@@ -62,14 +61,14 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 				int userId = user.getUserID();
 				
 				if(courseId == AdapterView.INVALID_ROW_ID) {
-					announcement = Toast.makeText(getApplicationContext(), "Ei kurssia valittuna", Toast.LENGTH_LONG);
+					announcement = Toast.makeText(getApplicationContext(), "No course selected", Toast.LENGTH_LONG);
 					announcement.show();
 				}
 				else {
 				dataSource.userToCourse(userId, (int)courseId);
 				listUpdate();
 				
-				getToastWithTimelable("Ilmoittautuminen onnistui!");
+				getToastWithTimelable("Enrollment successful!");
 				}
 				
 			}
@@ -115,7 +114,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 			bindListView();
 		}
 	}
-	//asettaa datan spinneriin
+	//sets data to the spinner
 	private void bindSpinner() {
 		try {
 			if(spinnerData == null) {
@@ -134,7 +133,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 			announcement.show();
 		}
 	}
-	//asettaa datan k‰ytt‰j‰n kurssi listaan
+	//sets data to the list
 	private void bindListView() {
 		try {
 			if(courseData == null) {
@@ -153,12 +152,4 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 		}
 	}
 	
-	/*kaataa ohjelman, kun painaa contextmenusta "delete‰" (siksi otin pois).
-	 * @Override
-	 */
-	/*protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		dataSource.close();
-	}*/
 }

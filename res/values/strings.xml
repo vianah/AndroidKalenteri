@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World!</string>
-    <string name="app_name">OpintoKalenteri</string>
+    <string name="app_name">Course Manager</string>
     <string name="Login_titletext">LOGIN</string>
     <string name="Login_usertext">Username</string>
     <string name="Login_passtext">Password</string>
@@ -14,11 +14,9 @@
     <string name="Createuser_button">Create</string>
     <string name="Createuser_info"/>
     <string name="Createuser_failed">Passwords do not match!</string>
-    <string name="Createuser_success">User successfully created!</string>
-    <string name="Main_points">pointsit</string>
     <string name="Main_title">MAIN MENU</string>
-    <string name="Main_manageCourses">Omien kurssien hallinta</string>
-    <string name="Main_listTitle">Tämänhetkiset kurssit:</string>
+    <string name="Main_manageCourses">Manage courses</string>
+    <string name="Main_listTitle">Active courses:</string>
     <string name="AdminMain_title">ADMIN SCREEN</string>
     <string name="AdminMain_manageCourses">Add Course</string>
     <string name="Createcourse_title">CREATE COURSE</string>
@@ -28,14 +26,9 @@
     <string name="adminCheckBox">Admin</string>
     <string name="loggedAs">Logged as:</string>
     <string name="AdminMain_acceptCourse">Accept course</string>
-    <string name="Managecourses_spinnerPrompt">Valitse kurssi</string>
-    <string-array name="kurssit_array">
-        <item>Kurssi1</item>
-        <item>Kurssi2</item>
-        <item>Kurssi3</item>
-    </string-array>
-    <string name="Managecourses_enrollText">Ilmoittaudu</string>
-    <string name="Managecourses_titleText">Ilmoittaudu kurssille:</string>
-    <string name="Managecourses_listTitleText">Peru ilmoittautuminen:</string>
+    <string name="Managecourses_spinnerPrompt">Select course</string>
+    <string name="Managecourses_enrollText">Enroll</string>
+    <string name="Managecourses_titleText">Enroll on a course:</string>
+    <string name="Managecourses_listTitleText">Cancel enrollment:</string>
 
 </resources>

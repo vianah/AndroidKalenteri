@@ -36,7 +36,7 @@ public class AndroidKalenteriActivity extends Activity {
 		super.onPause();
 	}*/
 	
-	//bundlesta User -olio
+	//User object from Bundle
 	protected void createUserFromBundle() {
 		extras = this.getIntent().getExtras();
 		user = new User(extras.getInt("userID"), 
@@ -51,7 +51,7 @@ public class AndroidKalenteriActivity extends Activity {
 		return intent;
 	}
 	
-	// Palauttaa p‰iv‰m‰‰r‰n ja kellonajan muodossa: "\nDD/MM/YYYY HH:MM"
+	// Returns the date and time in this form: "\nDD/MM/YYYY HH:MM"
 	protected String getTime() {
 		
 		theTime = new SimpleDateFormat("dd/MM/yyyy HH:mm");

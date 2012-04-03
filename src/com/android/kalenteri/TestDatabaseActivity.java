@@ -31,8 +31,6 @@ public class TestDatabaseActivity extends ListActivity {
 
 		List<User> values = datasource.getAllUsers();
 
-		// Use the SimpleCursorAdapter to show the
-		// elements in a ListView
 		ArrayAdapter<User> adapter = new ArrayAdapter<User>(this,
 				android.R.layout.simple_list_item_1, values);
 		setListAdapter(adapter);
