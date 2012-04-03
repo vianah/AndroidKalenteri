@@ -8,6 +8,7 @@ import com.android.kalenteri.database.UserCourseDatabase;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Adapter;
@@ -31,7 +32,7 @@ public class AcceptUserCourseActivity extends AndroidKalenteriActivity {
 	private Button acceptButton;
 	private SimpleCursorAdapter spinnerAdapter;
 	private Cursor spinnerData;
-	private SimpleCursorAdapter listAdapter;
+	private SimpleCursorAdapter userSpinnerAdapter;
 	private Cursor userData;
 	private TextView loggedAs;
 
@@ -78,21 +79,21 @@ public class AcceptUserCourseActivity extends AndroidKalenteriActivity {
 				int courseId = (int)courseSpinner.getSelectedItemId();
 				int grade = Integer.parseInt(gradeSpinner.getSelectedItem().toString());
 				if(dataSource.acceptUsersCourse(courseId, userId, grade)) {
-					listUpdate();
-					announcement = Toast.makeText(getApplicationContext(),"Hyväksyminen onnistui!", Toast.LENGTH_LONG);
-					announcement.show();				
+					//listUpdate();
+					getToastWithTimelable("Course accepted succesfully!");
+									
 				}
 			}
 		});
 		
 		bindSpinner();
 		fillGradeSpinner();
-		bindListView();
+		//bindUserSpinner();
 	}
 	
 	private void listUpdate() {
-		userData.requery();
-		listAdapter.notifyDataSetChanged();
+		Log.e("listUpdate", "updatee");
+		bindUserSpinner();
 	}
 	
 	private void bindSpinner() {
@@ -120,17 +121,17 @@ public class AcceptUserCourseActivity extends AndroidKalenteriActivity {
 		gradeSpinner.setAdapter(gradeAdapter);
 	}
 	
-	private boolean bindListView() {
+	private boolean bindUserSpinner() {
 		try {
-			if(userData == null) {
-				userData = dataSource.usersOnCourse((int)courseSpinner.getSelectedItemId());
-			}
+				
+			userData = dataSource.usersOnCourse((int)courseSpinner.getSelectedItemId());
+			
 			if(userData.moveToFirst()) {
-				listAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, userData, 
+				userSpinnerAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, userData, 
 													new String [] {"username"}, 
 													new int[] {android.R.id.text1});
-				listAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-				userSpinner.setAdapter(listAdapter);				
+				userSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				userSpinner.setAdapter(userSpinnerAdapter);				
 			}
 		}
 		catch(DatabaseException e) {

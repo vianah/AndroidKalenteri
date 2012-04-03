@@ -109,6 +109,24 @@ public class UserCourseDatabase {
 		}
 	}
 	
+	//käyttäjän kurssit
+		public Cursor getUsersUnfinishedCourses(User user) throws DatabaseException{
+			String[] values = {Integer.toString(user.getUserID())};
+			Cursor cursor = database.rawQuery("SELECT takes.user_id || '_' || takes.course_id as _id, " +
+					"courses.name as coursename, courses.points, takes.finished, takes.course_id " +
+					"FROM takes, courses WHERE takes.user_id=? " + 
+					"AND takes.course_id=courses._id " +
+					"AND takes.finished=0", values);
+			if(cursor.getCount() == 0) {
+				throw new DatabaseException("You have no courses!");
+			}
+			else {
+				cursor.moveToFirst();
+				return cursor;
+			}
+		}
+		
+	
 	
 	private User cursorToUser(Cursor cursor) {
 		User user = new User((int)cursor.getLong(0), 

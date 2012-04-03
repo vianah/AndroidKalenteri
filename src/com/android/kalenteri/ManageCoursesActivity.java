@@ -137,7 +137,7 @@ public class ManageCoursesActivity extends AndroidKalenteriActivity {
 	private void bindListView() {
 		try {
 			if(courseData == null) {
-				courseData = dataSource.getUsersCourses(user);
+				courseData = dataSource.getUsersUnfinishedCourses(user);
 			}
 			if(courseData.moveToFirst()) {
 				listAdapter = new SimpleCursorAdapter(this, R.layout.usermanagecoursedbview, courseData, 
